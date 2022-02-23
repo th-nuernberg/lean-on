@@ -10,7 +10,7 @@ require('dotenv').config({path: `${__dirname}\.env`})
 
 database.connect()
 
-app.get('/Team',async (req, res) => {
+app.get('/team', JwtToken.authenticateToken,async (req, res) => {
 
 
     let idMongoDb = new IdMongodb()
@@ -22,7 +22,16 @@ app.get('/Team',async (req, res) => {
 
 })
 
-app.get('/Login',async (req: any, res: any) => {
+app.get('/admin', JwtToken.authenticateToken, (req, res) => {
+
+    res.send({admin: req.admin})
+
+})
+
+
+
+
+app.get('/login',async (req: any, res: any) => {
 
 
 

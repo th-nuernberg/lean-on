@@ -1,6 +1,6 @@
 http://localhost:3000/Team
 
-###
+###Hello
 
 
 GET http://localhost:3000/Login
@@ -21,3 +21,23 @@ Content-Type: application/json
 }
 
 ###
+
+GET http://localhost:3000/Team
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWF0IjoxNTE2MjM5MDIyfQ.Z_ULXp4CifD6-Orio9ksHcIzaEuHgeBdhUuFMQX4HbU
+
+###RightTeamRequest
+
+GET http://localhost:3000/Team
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtTmFtZSI6eyJuYW1lIjoidGVhbV80In0sImlhdCI6MTY0NTIxNTc0MH0.Z_ULXp4CifD6-Orio9ksHcIzaEuHgeBdhUuFMQX4HbU
+
+###WrongTeamRequest
+
+GET http://localhost:3000/Team
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtTmFtZSI6eyJuYW1lIjoidGVhbV8yIn0sImlhdCI6MTY0NTIxNzI4MX0.t38sNxK8zTCvPLSU-6cRteto3K68wQIMNI8IP10Usyk
+
+###RightTeamRequest
+
+GET http://localhost:3000/Team
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJTZWJhc3RpYW4iLCJzdXJuYW1lIjoiR3VyZHVsaWMiLCJ0ZWFtIjoidGVhbV80IiwiYWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NTYzMTg3NH0.MOjyUHMYHXsnwnsGYr9Ds-TqQx4k9lEy4O2ixDYU1AU
+
+
