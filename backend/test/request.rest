@@ -1,9 +1,9 @@
-http://localhost:3000/Team
+http://localhost:3000/team
 
 ###Hello
 
 
-GET http://localhost:3000/Login
+GET http://localhost:3000/login
 Content-Type: application/json
 
 {
@@ -11,33 +11,72 @@ Content-Type: application/json
 }
 
 
-###
+###Regular User Login
 
-GET http://localhost:3000/Login
+GET http://localhost:3000/login
 Content-Type: application/json
 
 {
   "token": "dZTcXOVk0h"
 }
 
+###Admin User Login
+
+GET http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "token": "KEBUzoaqcbGUBkDlNWgA"
+}
+
+
+
 ###
 
-GET http://localhost:3000/Team
+GET http://localhost:3000/team
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWF0IjoxNTE2MjM5MDIyfQ.Z_ULXp4CifD6-Orio9ksHcIzaEuHgeBdhUuFMQX4HbU
 
 ###RightTeamRequest
 
-GET http://localhost:3000/Team
+GET http://localhost:3000/team
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtTmFtZSI6eyJuYW1lIjoidGVhbV80In0sImlhdCI6MTY0NTIxNTc0MH0.Z_ULXp4CifD6-Orio9ksHcIzaEuHgeBdhUuFMQX4HbU
 
 ###WrongTeamRequest
 
-GET http://localhost:3000/Team
+POST http://localhost:3000/team
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtTmFtZSI6eyJuYW1lIjoidGVhbV8yIn0sImlhdCI6MTY0NTIxNzI4MX0.t38sNxK8zTCvPLSU-6cRteto3K68wQIMNI8IP10Usyk
 
 ###RightTeamRequest
 
-GET http://localhost:3000/Team
+POST http://localhost:3000/team
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJTZWJhc3RpYW4iLCJzdXJuYW1lIjoiR3VyZHVsaWMiLCJ0ZWFtIjoidGVhbV80IiwiYWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NTYzMTg3NH0.MOjyUHMYHXsnwnsGYr9Ds-TqQx4k9lEy4O2ixDYU1AU
 
 
+###CheckForAdmin False
+GET http://localhost:3000/admin
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJTZWJhc3RpYW4iLCJzdXJuYW1lIjoiR3VyZHVsaWMiLCJ0ZWFtIjoidGVhbV80IiwiYWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NTYzMTg3NH0.MOjyUHMYHXsnwnsGYr9Ds-TqQx4k9lEy4O2ixDYU1AU
+
+###CheckForAdmin True
+GET http://localhost:3000/admin
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJhZG1pbiIsInN1cm5hbWUiOiJhZG1pbiIsInRlYW0iOiJ0ZWFtX2FkbWluIiwiYWRtaW4iOiJ0cnVlIiwiaWF0IjoxNjQ1NjM1NTM3fQ.sU_QnOjYj1kWDpf4p0tIX2OC1c3ZPLsa9D8MopWjDOk
+
+###SetNewTeam
+
+POST http://localhost:3000/team
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJTZWJhc3RpYW4iLCJzdXJuYW1lIjoiR3VyZHVsaWMiLCJ0ZWFtIjoidGVhbV80IiwiYWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NTYzMTg3NH0.MOjyUHMYHXsnwnsGYr9Ds-TqQx4k9lEy4O2ixDYU1AU
+Content-Type: application/json
+
+{
+  "title": "Sony",
+  "user" : [
+    {"firstname" : "Leonie",
+    "lastname": "Conchita",
+    "email": "test@mail.de"},{
+      "firstname": "Sebastian",
+      "lastname": "Mueller",
+      "email": "uebung@web.de"
+    }
+
+
+  ]
+}

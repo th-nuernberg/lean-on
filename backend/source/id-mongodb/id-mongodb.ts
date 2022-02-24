@@ -1,7 +1,10 @@
 import {IIdMongodb} from "./iid-mongodb";
 import {database} from "../database";
+import {ObjectId} from "mongodb";
 
 export {}
+
+const idCollectionName = "IdStorage"
 
 export interface IdCount{
     readonly commit: number,
@@ -11,35 +14,32 @@ export interface IdCount{
     readonly rating: number,
 }
 
+interface customIdIdStorage{
+    _id: string,
+    commit: number,
+    user: number,
+    evidence: number,
+    hypothesis: number,
+    rating: number
+}
+
 export class IdMongodb implements IIdMongodb{
 
-    constructor() {
+    private _databaseName: string;
+
+    constructor(databaseName: string) {
+        this._databaseName = databaseName;
     }
 
-    getNextCommitId(databaseName: string): Promise<number> {
-        return Promise.resolve(0);
-    }
 
-    getNextEvidenceId(databaseName: string): Promise<number> {
-        return Promise.resolve(0);
-    }
-
-    getNextHypothesisId(databaseName: string): Promise<number> {
-        return Promise.resolve(0);
-    }
-
-    getNextRatingId(databaseName: string): Promise<number> {
-        return Promise.resolve(0);
-    }
-
-    async getNextTeamId(): Promise<any> {
+    async getNextTeamId(): Promise<number | boolean>  {
 
         await database.connect()
 
         let databaseNames = await database.db().admin().listDatabases({nameOnly: true})
         let teamAmount = this.checkHowManyTeamDatabasesExist(databaseNames["databases"])
 
-        return Promise.resolve(teamAmount.toString());
+        return Promise.resolve(teamAmount);
     }
 
     private checkHowManyTeamDatabasesExist(databaseNames: Array<{name:string}>){
@@ -57,9 +57,55 @@ export class IdMongodb implements IIdMongodb{
 
     }
 
-    getNextUserId(databaseName: string): Promise<number> {
-        return Promise.resolve(0);
+    async getNextUserId(): Promise<number | boolean> {
+       let idDocument = await database.db(this._databaseName).collection(idCollectionName).findOne()
+        if(!idDocument)
+        {
+            return Promise.resolve(false)
+        }
+        let currentUserId = idDocument["user"]
+        await database.db(this._databaseName).collection(idCollectionName).updateOne({_id: idCollectionName}, {$set: {user: currentUserId++}})
+        return Promise.resolve(currentUserId)
     }
+
+    async postIdInitializeDocument() {
+        let collection = await database.db(this._databaseName).collection<customIdIdStorage>(idCollectionName)
+        try{
+            await collection.insertOne({
+                _id:  idCollectionName,
+                commit: 1,
+                user: 1,
+                evidence: 1,
+                hypothesis: 1,
+                rating: 1,
+            },
+                {
+                    forceServerObjectId: false
+                })
+        }
+        catch (e)
+        {
+            console.log(e)
+        }
+
+    }
+
+    getNextCommitId(): Promise<number | boolean> {
+        return Promise.resolve(false);
+    }
+
+    getNextEvidenceId(): Promise<number | boolean> {
+        return Promise.resolve(false);
+    }
+
+    getNextHypothesisId(): Promise<number | boolean> {
+        return Promise.resolve(false);
+    }
+
+    getNextRatingId(): Promise<number | boolean> {
+        return Promise.resolve(false);
+    }
+
 
 
 }

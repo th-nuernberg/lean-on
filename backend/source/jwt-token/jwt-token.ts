@@ -29,7 +29,7 @@ export class JwtToken{
 
 
 
-        const jwtData = {firstname: userData["firstname"],surname: userData["surname"], team: teamName, admin: admin}
+        const jwtData = {firstname: userData["firstname"],lastname: userData["lastname"], team: teamName, admin: admin}
 
         const accessToken =  JwtToken.jwt.sign(jwtData, process.env.ACCESS_TOKEN_SECRET)
 
@@ -52,7 +52,7 @@ export class JwtToken{
             if (err) return res.sendStatus(403)
 
             req.firstname = payload["firstname"]
-            req.surname = payload["surname"]
+            req.surname = payload["lastname"]
             req.team = payload["team"]
             req.admin = payload["admin"]
             next()
@@ -103,7 +103,7 @@ export class JwtToken{
                     {
 
                         if(token === user["token"])
-                            return {firstname: user["firstname"], surname: user["surname"]}
+                            return {firstname: user["firstname"], lastname: user["lastname"]}
                     }
                 }
 

@@ -2,15 +2,17 @@ export {}
 
 export interface IIdMongodb{
 
-    getNextUserId(databaseName: string): Promise<number>
+    getNextUserId(): Promise<number | boolean>
 
-    getNextEvidenceId(databaseName: string): Promise<number>
+    getNextEvidenceId(): Promise<number | boolean>
 
-    getNextHypothesisId(databaseName: string): Promise<number>
+    getNextHypothesisId(): Promise<number | boolean>
 
-    getNextTeamId(): Promise<number>
+    getNextTeamId(): Promise<number | boolean>
 
-    getNextRatingId(databaseName: string): Promise<number>
+    getNextRatingId(): Promise<number | boolean>
 
-    getNextCommitId(databaseName: string) : Promise<number>
+    getNextCommitId() : Promise<number | boolean>
+
+    postIdInitializeDocument()
 }
