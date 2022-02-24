@@ -64,7 +64,7 @@ export class IdMongodb implements IIdMongodb{
             return Promise.resolve(false)
         }
         let currentUserId = idDocument["user"]
-        await database.db(this._databaseName).collection(idCollectionName).updateOne({_id: idCollectionName}, {$set: {user: currentUserId++}})
+        await database.db(this._databaseName).collection(idCollectionName).updateOne({_id: idCollectionName}, {$set: {user: currentUserId+1}})
         return Promise.resolve(currentUserId)
     }
 

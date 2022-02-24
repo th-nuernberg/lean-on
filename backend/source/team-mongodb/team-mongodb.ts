@@ -2,8 +2,19 @@ import {ITeamMongodb} from "./iteam-mongodb";
 import {User} from "./user";
 import {database} from "../database"
 import {IIdMongodb} from "../id-mongodb/iid-mongodb";
+import {ITokenGenerator} from "./token-generator/itoken-generator";
+import {TokenGenerator} from "./token-generator/token-generator";
 
-export class TeamMongodb implements ITeamMongodb{
+interface teamSchema {
+    _id: string,
+    team_name: string,
+    users: object[]
+}
+
+const teamCollectionName = "Team"
+const lengthOfToken = 20
+
+export class TeamMongodb implements ITeamMongodb {
 
     deleteTeam(teamId: string) {
     }
@@ -21,35 +32,40 @@ export class TeamMongodb implements ITeamMongodb{
     putTeamTitle(teamId: string, newTitle: string) {
     }
 
-    async postTeam(teamTitle: string, users: {firstname: string, lastname: string, email:string }[], teamId: string, idGetter: IIdMongodb) {
+    async postTeam(teamTitle: string, users: { firstname: string, lastname: string, email: string }[], teamId: string, idGetter: IIdMongodb) {
 
         await idGetter.postIdInitializeDocument()
 
         let usersWithId = await this.giveUserId(users, idGetter)
-        if(!usersWithId)
-        {
+        if (!usersWithId) {
             return false
         }
-        let document = {_id: teamId, team_name: teamTitle, users}
+        let usersWithIdAndToken = this.giveUsersToken(usersWithId as {_id: string, firstname: string, lastname: string, email: string }[], new TokenGenerator())
+        let document = {_id: teamId, team_name: teamTitle, users: usersWithIdAndToken}
 
 
+        try {
+            await database.db(teamId).collection<teamSchema>(teamCollectionName).insertOne(document)
+        } catch (e) {
+            console.log(e)
+        }
 
 
     }
 
-    private async giveUserId(users: {firstname: string, lastname: string, email:string }[], idGetter: IIdMongodb)
-    {
+    private async giveUserId(users: { firstname: string, lastname: string, email: string }[], idGetter: IIdMongodb) {
         let usersWithId: object[] = []
         let userId: number | boolean
-        for (let user of users)
-        {
+        for (let user of users) {
             userId = await idGetter.getNextUserId()
-            if(userId)
-            {
-                usersWithId.push({_id: userId, firstname: user["firstname"], lastname:user["lastname"], email: user["email"] })
-            }
-            else
-            {
+            if (userId) {
+                usersWithId.push({
+                    _id: userId,
+                    firstname: user["firstname"],
+                    lastname: user["lastname"],
+                    email: user["email"]
+                })
+            } else {
                 return false
             }
         }
@@ -57,6 +73,17 @@ export class TeamMongodb implements ITeamMongodb{
         return usersWithId
     }
 
-    private giveUser
+    private giveUsersToken(users: {_id: string, firstname: string, lastname: string, email: string }[], tokenGenerator: ITokenGenerator)
+    {
+        let userWithToken: object[] = []
+        for(let user of users)
+        {
+            user["token"] = tokenGenerator.generateToken(lengthOfToken)
+            userWithToken.push(user)
+        }
+
+        return userWithToken
+
+    }
 
 }
