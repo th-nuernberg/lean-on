@@ -34,7 +34,18 @@ export class RouteHandler{
         let teamId = await idGetter.getNextTeamId()
         let teamIdString = "team_" + teamId.toString()
 
-        await teamMongodb.postTeam(title, users, teamIdString, new IdMongodb(teamIdString))
+        try{
+            await teamMongodb.postTeam(title, users, teamIdString, new IdMongodb(teamIdString))
+        }
+        catch (e)
+        {
+            console.log(e)
+            res.sendStatus(500)
+        }
+
+        res.sendStatus(200)
 
     }
+
+    async
 }

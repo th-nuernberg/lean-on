@@ -17,8 +17,6 @@ app.post('/team', JwtToken.authenticateToken,async (req, res) => {
 
     routeHandler.postTeamHandler(req, res, new TeamMongodb(), new IdMongodb(""))
 
-    res.send("hi")
-
 })
 
 app.get('/admin', JwtToken.authenticateToken, (req, res) => {
@@ -42,6 +40,30 @@ app.get('/login',async (req: any, res: any) => {
         res.send(jwtToken)
     }
 
+
+})
+
+app.get("/evidence/:id", async(req,res)=> {
+
+})
+
+app.get("/evidence", async(req,res)=> {
+
+})
+
+app.post("/evidence", async(req,res)=> {
+
+})
+
+app.get("/hypotheses", async(req,res)=> {
+
+})
+
+app.get("/hypothesis/:id", async(req,res)=> {
+
+})
+
+app.post("/hypothesis", async(req,res)=> {
 
 })
 
