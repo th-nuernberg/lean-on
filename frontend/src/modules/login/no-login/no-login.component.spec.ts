@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CheckTokenComponent } from './check-token.component';
+import { NoLoginComponent } from './no-login.component';
 
-describe('CheckTokenComponent', () => {
-  let component: CheckTokenComponent;
-  let fixture: ComponentFixture<CheckTokenComponent>;
+describe('NoLoginComponent', () => {
+  let component: NoLoginComponent;
+  let fixture: ComponentFixture<NoLoginComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CheckTokenComponent ]
+      declarations: [ NoLoginComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CheckTokenComponent);
+    fixture = TestBed.createComponent(NoLoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

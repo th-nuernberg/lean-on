@@ -7,6 +7,11 @@ import {TeamMongodb} from "./team-mongodb/team-mongodb";
 const express = require("express")
 const app = express()
 const routeHandler = new RouteHandler()
+const cors = require("cors")
+
+app.use(cors({
+    origin: "http://localhost:4200"
+}))
 
 app.use(express.json())
 require('dotenv').config({path: `${__dirname}\.env`})
@@ -26,7 +31,7 @@ app.get('/admin', JwtToken.authenticateToken, (req, res) => {
 })
 
 
-app.get('/login',async (req: any, res: any) => {
+app.post('/login',async (req: any, res: any) => {
 
 
 
