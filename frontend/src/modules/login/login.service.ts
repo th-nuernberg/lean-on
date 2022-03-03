@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {TokenService} from "../shared/token.service";
 import {AdminService} from "../shared/admin.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {lastValueFrom} from "rxjs";
+import {catchError, lastValueFrom, throwError} from "rxjs";
 
 
 @Injectable()
@@ -17,25 +17,32 @@ export class LoginService {
               private httpClient: HttpClient) {
   }
 
-   async login(){
+  async login() {
     let queryToken = this.activeRoute.snapshot.params["token"]
-     const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8',
-     "Access-Control-Allow-Origin": "*"});
+    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
 
-     let post = this.httpClient.post("http://localhost:3000/login",{"token" : queryToken},{headers: headers})
-     let jwtResponse = await lastValueFrom(post)
-     console.log(jwtResponse)
-/*     if(jwtResponse.hasOwnProperty("token")) {
-       this.tokenService.storeToken(jwtResponse.token)
-     }*/
+
+    let jwtToken = await this.getJWToken(headers, queryToken)
+    console.log(jwtToken)
+
+    if (jwtToken.hasOwnProperty("accessToken")) {
+      // @ts-ignore
+      this.tokenService.storeToken(jwtToken["accessToken"])
+      return true
+    }
+    else {
+      return jwtToken
+    }
 
   }
 
-  private async validateToken() {
-
+  private async getJWToken(headers: HttpHeaders, queryToken: string) {
+    let post = this.httpClient.post("http://localhost:3000/login", {"token": queryToken}, {headers: headers})
+    let jwtResponse = await lastValueFrom(post).catch((reason => {
+      return {error: true, statuscode: reason["status"], statusText: reason["statusText"]}
+    }))
+    return jwtResponse
   }
-
-
 
 
 }

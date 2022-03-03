@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NoLoginComponent } from './no-login.component';
+import { BmcComponent } from './bmc.component';
 
-describe('NoLoginComponent', () => {
-  let component: NoLoginComponent;
-  let fixture: ComponentFixture<NoLoginComponent>;
+describe('BmcComponent', () => {
+  let component: BmcComponent;
+  let fixture: ComponentFixture<BmcComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NoLoginComponent ]
+      declarations: [ BmcComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NoLoginComponent);
+    fixture = TestBed.createComponent(BmcComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
