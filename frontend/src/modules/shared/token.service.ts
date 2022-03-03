@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import {SharedModule} from "./shared.module";
 import jwtDecode from "jwt-decode";
+import { Router} from "@angular/router";
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class TokenService {
+export class TokenService{
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   storeToken(token: string): void{
 
@@ -31,4 +32,5 @@ export class TokenService {
     }
     return false
   }
+  
 }

@@ -7,6 +7,7 @@ import {HttpInterceptorService} from "../modules/shared/http-interceptor.service
 import {LoginModule} from "../modules/login/login.module";
 import {SharedModule} from "../modules/shared/shared.module";
 import {RoutingModule} from "../modules/routing/routing.module";
+import {HeaderModule} from "../modules/header/header.module";
 
 
 
@@ -19,7 +20,8 @@ import {RoutingModule} from "../modules/routing/routing.module";
     BrowserModule,
     LoginModule,
     SharedModule,
-    RoutingModule
+    RoutingModule,
+    HeaderModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi:true}],
   bootstrap: [AppComponent],

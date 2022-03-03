@@ -4,12 +4,13 @@ import {CheckTokenComponent} from "../login/check-token/check-token.component";
 import {PageNotFoundComponent} from "../shared/pagenotfound/pagenotfound.component";
 import {BMCComponent} from "../bmc/bmc/bmc.component";
 import {NoTokenComponent} from "../login/no-token/no-token.component";
+import {TokenGuardService} from "../shared/token-guard.service";
 
 
 const appRoutes: Routes = [
   {path: '', component: CheckTokenComponent},
   {path: 'login/:token', component: CheckTokenComponent},
-  {path: 'bmc', component: BMCComponent},
+  {path: 'bmc', component: BMCComponent, canActivate: [TokenGuardService]},
   {path: 'no-token', component: NoTokenComponent},
 
   /*

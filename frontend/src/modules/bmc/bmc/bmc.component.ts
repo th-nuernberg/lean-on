@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenService} from "../../shared/token.service";
 
 @Component({
   selector: 'app-bmc',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BMCComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tokenService: TokenService) { }
 
   ngOnInit(): void {
   }
