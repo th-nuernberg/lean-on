@@ -4,7 +4,9 @@ import {CheckTokenComponent} from "../login/check-token/check-token.component";
 import {PageNotFoundComponent} from "../shared/pagenotfound/pagenotfound.component";
 import {BMCComponent} from "../bmc/bmc/bmc.component";
 import {NoTokenComponent} from "../login/no-token/no-token.component";
-import {TokenGuardService} from "../shared/token-guard.service";
+import {TokenGuardService} from "./token-guard.service";
+import {TeamGuardService} from "./team-guard.service";
+import {TeamOvierewComponent} from "../teams-overview/team-ovierew/team-ovierew.component";
 
 
 const appRoutes: Routes = [
@@ -12,6 +14,7 @@ const appRoutes: Routes = [
   {path: 'login/:token', component: CheckTokenComponent},
   {path: 'bmc', component: BMCComponent, canActivate: [TokenGuardService]},
   {path: 'no-token', component: NoTokenComponent},
+  {path: 'team', component: TeamOvierewComponent, canActivate: [TeamGuardService]},
 
   /*
     {path: 'hypothesis/:id', component: HypothesisDetailComponent},
@@ -22,9 +25,7 @@ const appRoutes: Routes = [
 /*
   {path: 'evidence', component: NewEvidenceComponent},
 */
-/*
-  {path: 'team-overview', component: TeamOverviewComponent},
-*/
+
 /*
   {path: 'commit-summary', component: CommitSummaryComponent},
 */

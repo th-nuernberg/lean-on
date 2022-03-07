@@ -10,7 +10,7 @@ import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 @NgModule({
   declarations: [
 
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     CommonModule

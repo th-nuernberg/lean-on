@@ -16,8 +16,10 @@ export class AdminService {
 
     let token = this.tokenService.getToken()
 
-    let observable = this.httpClient.get("localhost:3000/admin")
+    let observable = this.httpClient.get("http://localhost:3000/admin")
     let response = await lastValueFrom(observable)
+
+    console.log(response)
 
     return response
 
