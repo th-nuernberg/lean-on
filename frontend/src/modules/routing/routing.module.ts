@@ -14,7 +14,7 @@ const appRoutes: Routes = [
   {path: 'login/:token', component: CheckTokenComponent},
   {path: 'bmc', component: BMCComponent, canActivate: [TokenGuardService]},
   {path: 'no-token', component: NoTokenComponent},
-  {path: 'team', component: TeamOvierewComponent, canActivate: [TeamGuardService]},
+  {path: 'teams', component: TeamOvierewComponent, canActivate: [TeamGuardService]},
 
   /*
     {path: 'hypothesis/:id', component: HypothesisDetailComponent},
