@@ -1,0 +1,18 @@
+.bg-standard-color
+{
+  background-color: #0046A0;
+}
+@media only screen and (min-width: 768px){
+
+  .button-width-md-middle
+  {
+    width: 120px
+  }
+
+  .button-width-md-large
+  {
+    width: 180px
+  }
+
+}
+

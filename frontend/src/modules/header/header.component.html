@@ -6,15 +6,15 @@
     </button>
     <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
       <div class="navbar-nav ms-md-auto align-items-sm-center" *ngIf="adminService.checkJWTokenIfAdmin()">
-        <a class="nav-link active" [routerLink]="['teams']" aria-current="page"><img class="img-team" src="assets/images/baseline_terrain_white_48dpv2.png"></a>
-        <a class="nav-link" [routerLink]="['commit']"><img *ngIf="adminTeamLoggedIn.isLoggedIn()" class="img-commit" src="assets/images/baseline_fact_check_white_36dpv2.png"></a>
-        <a class="nav-link" [routerLink]="['bmc']" *ngIf="adminTeamLoggedIn.isLoggedIn()"><img class="img-canvas" src="assets/images/Canvas.png"></a>
-        <a class="nav-link" [routerLink]="['evidence']" *ngIf="adminTeamLoggedIn.isLoggedIn()"><img class="img-evidence" src="assets/images/baseline_science_white_36dpv2.png"></a>
+        <a class="nav-link active" [routerLink]="['teams']" aria-current="page"><img class="img-team" src="../../assets/images/header/baseline_terrain_white_48dpv2.png"></a>
+        <a class="nav-link" [routerLink]="['commit']"><img *ngIf="adminTeamLoggedIn.isLoggedIn()" class="img-commit" src="../../assets/images/header/baseline_fact_check_white_36dpv2.png"></a>
+        <a class="nav-link" [routerLink]="['bmc']" *ngIf="adminTeamLoggedIn.isLoggedIn()"><img class="img-canvas" src="../../assets/images/header/Canvas.png"></a>
+        <a class="nav-link" [routerLink]="['evidence']" *ngIf="adminTeamLoggedIn.isLoggedIn()"><img class="img-evidence" src="../../assets/images/header/baseline_science_white_36dpv2.png"></a>
       </div>
       <div class="navbar-nav ms-md-auto align-items-sm-center" *ngIf="!(adminService.checkJWTokenIfAdmin())">
-        <a class="nav-link" [routerLink]="['commit']"><img  class="img-commit" src="assets/images/baseline_fact_check_white_36dpv2.png"></a>
-        <a class="nav-link" [routerLink]="['bmc']" ><img class="img-canvas" src="assets/images/Canvas.png"></a>
-        <a class="nav-link" [routerLink]="['evidence']" ><img class="img-evidence" src="assets/images/baseline_science_white_36dpv2.png"></a>
+        <a class="nav-link" [routerLink]="['commit']"><img  class="img-commit" src="../../assets/images/header/baseline_fact_check_white_36dpv2.png"></a>
+        <a class="nav-link" [routerLink]="['bmc']" ><img class="img-canvas" src="../../assets/images/header/Canvas.png"></a>
+        <a class="nav-link" [routerLink]="['evidence']" ><img class="img-evidence" src="../../assets/images/header/baseline_science_white_36dpv2.png"></a>
       </div>
     </div>
   </div>
