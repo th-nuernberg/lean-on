@@ -28,7 +28,6 @@ export class AdminService {
   checkJWTokenIfAdmin(){
 
     let decodedToken = this.tokenService.getDecodedToken()
-    console.log(decodedToken)
     // @ts-ignore
     return decodedToken["admin"] === "true"
 

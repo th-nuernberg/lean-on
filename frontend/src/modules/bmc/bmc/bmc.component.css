@@ -2,6 +2,11 @@
 {
   background-color: #0046A0;
 }
+
+.upload-img{
+  width: 15px;
+  height: auto;
+}
 @media only screen and (min-width: 768px){
 
   .button-width-md-middle
@@ -11,7 +16,7 @@
 
   .button-width-md-large
   {
-    width: 180px
+    width: 250px
   }
 
 }
