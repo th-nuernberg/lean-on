@@ -8,6 +8,7 @@ import {LoginModule} from "../modules/login/login.module";
 import {SharedModule} from "../modules/shared/shared.module";
 import {RoutingModule} from "../modules/routing/routing.module";
 import {HeaderModule} from "../modules/header/header.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -21,7 +22,8 @@ import {HeaderModule} from "../modules/header/header.module";
     LoginModule,
     SharedModule,
     RoutingModule,
-    HeaderModule
+    HeaderModule,
+    BrowserAnimationsModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi:true}],
   bootstrap: [AppComponent],

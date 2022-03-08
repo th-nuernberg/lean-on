@@ -9,7 +9,7 @@ import { BMCComponent } from './bmc/bmc.component';
     BMCComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ]
 })
 export class BmcModule { }

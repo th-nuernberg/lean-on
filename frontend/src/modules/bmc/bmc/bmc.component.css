@@ -4,20 +4,21 @@
 }
 
 .upload-img{
-  width: 15px;
+  width: 9.5px;
   height: auto;
 }
 @media only screen and (min-width: 768px){
 
   .button-width-md-middle
   {
-    width: 120px
+    width: auto;
   }
 
   .button-width-md-large
   {
-    width: 250px
+    width: auto
   }
 
 }
+
 
