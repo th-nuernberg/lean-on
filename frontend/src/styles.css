@@ -6,3 +6,9 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.bg-standard-color
+{
+  background-color: #0046A0 !important;
+}
+

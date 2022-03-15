@@ -1,8 +1,9 @@
-import {database,connect, close} from "./database";
+import {database} from "./database";
 import {IdMongodb} from "./id-mongodb/id-mongodb";
 import {JwtToken} from "./jwt-token/jwt-token";
 import {RouteHandler} from "./route-handler/route-handler";
 import {TeamMongodb} from "./team-mongodb/team-mongodb";
+import{setTeamAdmin} from "./team-mongodb/team-admin-mongodb"
 
 const express = require("express")
 const app = express()
@@ -16,7 +17,10 @@ app.use(cors({
 app.use(express.json())
 require('dotenv').config({path: `${__dirname}\.env`})
 
+
 database.connect()
+setTeamAdmin()
+
 
 app.post('/team', JwtToken.authenticateToken,async (req, res) => {
 

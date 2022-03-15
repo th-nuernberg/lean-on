@@ -1,22 +1,12 @@
-.bg-standard-color
-{
-  background-color: #0046A0;
-}
-
 .upload-img{
   width: 9.5px;
   height: auto;
 }
 @media only screen and (min-width: 768px){
 
-  .button-width-md-middle
+  .button-width-md
   {
     width: auto;
-  }
-
-  .button-width-md-large
-  {
-    width: auto
   }
 
 }

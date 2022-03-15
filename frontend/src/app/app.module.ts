@@ -9,6 +9,7 @@ import {SharedModule} from "../modules/shared/shared.module";
 import {RoutingModule} from "../modules/routing/routing.module";
 import {HeaderModule} from "../modules/header/header.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from "@angular/material/table";
 
 
 
@@ -23,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     RoutingModule,
     HeaderModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi:true}],
   bootstrap: [AppComponent],
