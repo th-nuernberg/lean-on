@@ -8,6 +8,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatTableModule} from "@angular/material/table";
+import {TeamDataService} from "./team-data.service";
 
 
 @NgModule({
@@ -22,8 +24,12 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ],
+  providers: [
+    TeamDataService
+  ]
 
 })
 export class TeamOverviewModule { }
