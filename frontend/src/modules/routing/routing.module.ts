@@ -6,7 +6,7 @@ import {BMCComponent} from "../bmc/bmc/bmc.component";
 import {NoTokenComponent} from "../login/no-token/no-token.component";
 import {TokenGuardService} from "./token-guard.service";
 import {TeamGuardService} from "./team-guard.service";
-import {TeamOvierewComponent} from "../teams-overview/team-ovierew/team-ovierew.component";
+import {TeamOverviewComponent} from "../teams-overview/team-overview/team-overview.component";
 
 
 const appRoutes: Routes = [
@@ -14,7 +14,7 @@ const appRoutes: Routes = [
   {path: 'login/:token', component: CheckTokenComponent},
   {path: 'bmc', component: BMCComponent, canActivate: [TokenGuardService]},
   {path: 'no-token', component: NoTokenComponent},
-  {path: 'teams', component: TeamOvierewComponent, canActivate: [TokenGuardService,TeamGuardService]},
+  {path: 'teams', component: TeamOverviewComponent, canActivate: [TokenGuardService,TeamGuardService]},
 
   /*
     {path: 'hypothesis/:id', component: HypothesisDetailComponent},

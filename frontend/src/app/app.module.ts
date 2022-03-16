@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -9,7 +9,7 @@ import {SharedModule} from "../modules/shared/shared.module";
 import {RoutingModule} from "../modules/routing/routing.module";
 import {HeaderModule} from "../modules/header/header.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTableModule} from "@angular/material/table";
+import {TeamOverviewModule} from "../modules/teams-overview/team-overview.module";
 
 
 
@@ -25,7 +25,7 @@ import {MatTableModule} from "@angular/material/table";
     RoutingModule,
     HeaderModule,
     BrowserAnimationsModule,
-    MatTableModule
+    TeamOverviewModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi:true}],
   bootstrap: [AppComponent],
