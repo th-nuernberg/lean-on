@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {TeamDialogComponent} from "../team-dialog/team-dialog.component";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {MatTableDataSource} from "@angular/material/table";
+import {TeamDataService} from "../team-data.service";
 
 @Component({
   selector: 'app-team-overview',
@@ -10,9 +12,11 @@ import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class TeamOverviewComponent implements OnInit {
 
+  displayedColumns = ["#","Team-Name", "Actions"]
+  tableDataSource = new MatTableDataSource([{"id": 1,"teamName": "sony"}])
 
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, public teamDataService: TeamDataService) { }
 
   ngOnInit(): void {
   }
@@ -31,6 +35,16 @@ export class TeamOverviewComponent implements OnInit {
       console.log("Dialog works")
       console.log(result)
     })
+
+  }
+
+  openTeamDialog() {
+
+  }
+
+  async deleteTeam(id: number) {
+
+    await this.teamDataService.deleteTeam(id)
 
   }
 }

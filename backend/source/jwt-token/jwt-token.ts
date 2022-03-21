@@ -52,13 +52,36 @@ export class JwtToken{
             if (err) return res.sendStatus(403)
 
             req.firstname = payload["firstname"]
-            req.surname = payload["lastname"]
+            req.lastname = payload["lastname"]
             req.team = payload["team"]
             req.admin = payload["admin"]
             next()
         })
+    }
+
+    static authenticateTokenAdmin(req:any, res:any, next:any) {
 
 
+        const authHeader = req.headers['authorization']
+        const token = authHeader && authHeader.split(' ')[1]
+
+        if (token == null) return res.sendStatus(401)
+
+        JwtToken.jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
+
+            if (err) return res.sendStatus(403)
+
+            if(payload["admin"] !== "true")
+            {
+                return res.sendStatus(401)
+            }
+
+            req.firstname = payload["firstname"]
+            req.lastname = payload["lastname"]
+            req.team = payload["team"]
+            req.admin = payload["admin"]
+            next()
+        })
     }
 
     private async checkTokenWithUsers(token: string, database): Promise<string | boolean>

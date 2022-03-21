@@ -3,6 +3,7 @@ import {SharedModule} from "./shared.module";
 import {TokenService} from "./token.service";
 import {HttpClient} from "@angular/common/http";
 import {lastValueFrom} from "rxjs";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AdminService {
 
     let token = this.tokenService.getToken()
 
-    let observable = this.httpClient.get("http://localhost:3000/admin")
+    let observable = this.httpClient.get(environment.serverAddress+"/admin")
     let response = await lastValueFrom(observable)
 
     console.log(response)

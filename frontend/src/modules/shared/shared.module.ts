@@ -4,6 +4,8 @@ import {AdminService} from "./admin.service";
 import {HttpInterceptorService} from "./http-interceptor.service";
 import {TokenService} from "./token.service";
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 
@@ -11,12 +13,15 @@ import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
   declarations: [
 
     PageNotFoundComponent,
+     ConfirmationDialogComponent,
   ],
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule,
+        MatDialogModule
+    ],
   exports: [
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ConfirmationDialogComponent
   ]
 })
 export class SharedModule { }

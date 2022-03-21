@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {TokenService} from "../../shared/token.service";
 import {HypothesesApiService} from "../hypotheses-api.service";
 import {MatDialog} from "@angular/material/dialog";
-import {NewHypothesisDialogComponent} from "../new-hypothesis-dialog/new-hypothesis-dialog.component";
 
 @Component({
   selector: 'app-bmc',
@@ -19,12 +18,6 @@ export class BMCComponent implements OnInit {
   }
 
   openHypoDialog() {
-    const dialogRef = this.dialog.open(NewHypothesisDialogComponent);
 
-    dialogRef.afterClosed().subscribe(result =>
-    {
-      console.log(result)
-      console.log("dialogWorks")
-    })
   }
 }

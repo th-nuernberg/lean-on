@@ -1,6 +1,28 @@
 <div class="container-fluid">
   <div class="row justify-content-end mt-3 mx-3">
-    <button type="button" (click)="openNewTeamDialog()" class="btn btn-dark button-width-md standard-button me-3 button-width-md-middle mt-2">+ Team</button>
+    <button type="button" (click)="openNewTeamDialog()" class="btn btn-dark button-width-md standard-button mx-3 button-width-md-middle mt-2">+ Team</button>
   </div>
+</div>
+<div class="mat-elevation-z4 width-table-xs table-max-width font-size-xs
+ mt-3 mx-auto">
+  <mat-table #table [dataSource]="tableDataSource">
 
+    <ng-container matColumnDef="#">
+      <mat-header-cell class="font-size-md font-size-xs" *matHeaderCellDef> # </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Team-Name">
+      <mat-header-cell class="font-size-md font-size-xs"  *matHeaderCellDef> Team-name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.teamName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Actions">
+      <mat-header-cell class="font-size-md font-size-xs"  *matHeaderCellDef> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let element"><div class="d-flex"><img (click)="openTeamDialog()" src="assets/images/icons/baseline_search_black_48dp.png" class="img-check pointer icon-margin-xs"><img (click)="deleteTeam(element.id)" class="img-delete pointer icon-margin-xs" src="assets/images/icons/baseline_delete_black_48dp.png"></div></mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>

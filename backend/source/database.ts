@@ -9,7 +9,7 @@ export async function connect()
         console.log("something went wrong with the database connection")
 
     }).then((value) => {
-        console.log("Database connection Succeded")
+        console.log("Database connection Succeeded")
     })
 }
 

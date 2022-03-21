@@ -1,4 +1,27 @@
-@media only screen and (min-width: 768px){
+.img-delete{
+  height: auto;
+  width: 19px;
+}
+
+.img-check{
+  height: auto;
+  width: 19px;
+}
+
+.table-max-width{
+
+  max-width: 1000px;
+  width: 80%;
+}
+
+.font-size-md
+{
+  font-size: 11pt;
+}
+
+
+
+@media only screen and (min-width: 576px){
 
   .button-width-md
   {
@@ -6,3 +29,23 @@
   }
 
 }
+
+@media only screen and (max-width: 576px){
+
+  .font-size-xs
+  {
+    font-size: 9pt;
+  }
+
+  .width-table-xs{
+    width: 80%
+  }
+
+  .icon-margin-xs{
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+
+}
+

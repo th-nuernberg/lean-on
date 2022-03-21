@@ -54,11 +54,12 @@ export class TeamDialogComponent implements OnInit {
       this.table.renderRows()
     }
 
+    this.formGroup.get('users')?.reset()
+
   }
 
   sentTeamData()
   {
-
     // @ts-ignore
     this.teamDataService.sentTeam(this.formGroup.get('team-name')?.value, this.usersDataSource.data)
   }

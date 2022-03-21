@@ -16,7 +16,13 @@ const lengthOfToken = 20
 
 export class TeamMongodb implements ITeamMongodb {
 
-    deleteTeam(teamId: string) {
+    async deleteTeam(teamId: string) {
+       return database.db("team_"+teamId).dropDatabase().catch(reason => {
+            console.log(reason)
+            return false
+        }).then(value => {
+            return true
+        })
     }
 
     deleteUser(teamId: string, userId: string[]) {

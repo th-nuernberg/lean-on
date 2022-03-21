@@ -10,6 +10,7 @@ import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatTableModule} from "@angular/material/table";
 import {TeamDataService} from "./team-data.service";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {TeamDataService} from "./team-data.service";
   ],
   imports: [
     CommonModule,
+    SharedModule,
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
