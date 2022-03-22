@@ -17,13 +17,13 @@ export class TeamDialogComponent implements OnInit {
   usersDataSource = new MatTableDataSource<{ firstname: string, lastname: string, email: string }>([])
   // @ts-ignore
   @ViewChild(MatTable) table: MatTable<any>;
+  // @ts-ignore
+  @ViewChild('firstname') input: ElementRef
 
 
   constructor(public teamDataService : TeamDataService) { }
 
   ngOnInit(): void {
-    console.log(this.usersDataSource.data)
-
   }
 
   private setUpFormGroup() {
@@ -39,9 +39,6 @@ export class TeamDialogComponent implements OnInit {
 
 
   onAddUser() {
-
-    console.log(this.table)
-
     let firstname = this.formGroup.get('users.firstname')?.value
     let lastname = this.formGroup.get('users.lastname')?.value
     let email = this.formGroup.get('users.email')?.value
@@ -55,6 +52,7 @@ export class TeamDialogComponent implements OnInit {
     }
 
     this.formGroup.get('users')?.reset()
+    this.input.nativeElement.focus()
 
   }
 

@@ -11,35 +11,33 @@ import {TeamDataService} from "../team-data.service";
 })
 export class TeamOverviewComponent implements OnInit {
 
-  displayedColumns = ["#","Team-Name", "Actions"]
+  displayedColumns = ["#", "Team-Name", "Actions"]
   tableDataSource: any
   // @ts-ignore
   @ViewChild(MatTable) table: MatTable<any>;
 
 
-
-  constructor(private dialog: MatDialog, public teamDataService: TeamDataService) { }
+  constructor(private dialog: MatDialog, public teamDataService: TeamDataService) {
+  }
 
   async ngOnInit() {
-    let teamData =  await this.teamDataService.getTeams()
+    let teamData = await this.teamDataService.getTeams()
     this.tableDataSource = teamData
   }
 
 
+  async openNewTeamDialog() {
 
-
-
-  openNewTeamDialog() {
-
-    const dialogRef=
-      this.dialog.open(TeamDialogComponent,{
+    const dialogRef =
+      this.dialog.open(TeamDialogComponent, {
         width: "800px"
+      })
 
-  })
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log("Dialog works")
-      console.log(result)
+    dialogRef.afterClosed().subscribe(async result => {
+      if (result) {
+        this.tableDataSource = await this.teamDataService.getTeams()
+        this.table.renderRows()
+      }
     })
 
   }
@@ -56,7 +54,4 @@ export class TeamOverviewComponent implements OnInit {
 
   }
 
-  async test() {
-   console.log(await this.teamDataService.getTeams())
-  }
 }
