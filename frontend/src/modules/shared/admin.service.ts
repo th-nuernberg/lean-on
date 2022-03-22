@@ -20,8 +20,6 @@ export class AdminService {
     let observable = this.httpClient.get(environment.serverAddress+"/admin")
     let response = await lastValueFrom(observable)
 
-    console.log(response)
-
     return response
 
   }
