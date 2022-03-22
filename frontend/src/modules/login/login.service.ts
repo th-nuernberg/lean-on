@@ -23,7 +23,6 @@ export class LoginService {
 
 
     let jwtToken = await this.getJWToken(headers, queryToken)
-    console.log(jwtToken)
 
     if (jwtToken.hasOwnProperty("accessToken")) {
       // @ts-ignore
@@ -38,10 +37,11 @@ export class LoginService {
 
   private async getJWToken(headers: HttpHeaders, queryToken: string) {
     let post = this.httpClient.post("http://localhost:3000/login", {"token": queryToken}, {headers: headers})
-    let jwtResponse = await lastValueFrom(post).catch((reason => {
-      return {error: true, statuscode: reason["status"], statusText: reason["statusText"]}
+    return await lastValueFrom(post).catch((reason => {
+      console.log({error: true, statuscode: reason["status"], statusText: reason["statusText"]})
+      return{}
     }))
-    return jwtResponse
+
   }
 
 

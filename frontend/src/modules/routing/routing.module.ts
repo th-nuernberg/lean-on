@@ -7,12 +7,14 @@ import {NoTokenComponent} from "../login/no-token/no-token.component";
 import {TokenGuardService} from "./token-guard.service";
 import {TeamGuardService} from "./team-guard.service";
 import {TeamOverviewComponent} from "../teams-overview/team-overview/team-overview.component";
+import {AdminTeamCheckoutService} from "../shared/admin-team-checkout.service";
+import {AdminCheckoutGuardService} from "./admin-checkout-guard.service";
 
 
 const appRoutes: Routes = [
   {path: '', component: CheckTokenComponent},
   {path: 'login/:token', component: CheckTokenComponent},
-  {path: 'bmc', component: BMCComponent, canActivate: [TokenGuardService]},
+  {path: 'bmc', component: BMCComponent, canActivate: [TokenGuardService, AdminCheckoutGuardService]},
   {path: 'no-token', component: NoTokenComponent},
   {path: 'teams', component: TeamOverviewComponent, canActivate: [TokenGuardService,TeamGuardService]},
 
