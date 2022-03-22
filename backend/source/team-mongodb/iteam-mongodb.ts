@@ -3,7 +3,7 @@ import {IIdMongodb} from "../id-mongodb/iid-mongodb";
 
 export interface ITeamMongodb
 {
-    getTeam(teamId: string)
+    getTeams()
 
     postTeam(teamTitle: string, users: {firstname: string, lastname: string, email:string }[], teamId: string, idGetter: IIdMongodb)
     deleteUser(teamId: string, userId: string[])

@@ -1,13 +1,14 @@
-import {database} from "./database";
+import {database} from "./database/database";
 import {IdMongodb} from "./id-mongodb/id-mongodb";
 import {JwtToken} from "./jwt-token/jwt-token";
 import {RouteTeamHandler} from "./route-handler/route-team-handler";
 import {TeamMongodb} from "./team-mongodb/team-mongodb";
 import{setTeamAdmin} from "./team-mongodb/team-admin-mongodb"
+import {getAllDatabaseNames} from "./database/getAllDatabaseNames";
 
 const express = require("express")
 const app = express()
-const routeHandler = new RouteTeamHandler()
+const routeTeamHandler = new RouteTeamHandler()
 const cors = require("cors")
 
 app.use(cors({
@@ -25,14 +26,14 @@ setTeamAdmin()
 app.post('/team', JwtToken.authenticateTokenAdmin,async (req, res) => {
 
     console.log('request arrived')
-    routeHandler.postTeamHandler(req, res, new TeamMongodb(), new IdMongodb(""))
+    routeTeamHandler.postTeamHandler(req, res, new TeamMongodb(), new IdMongodb(""))
 
 })
 
 app.get('/teams', JwtToken.authenticateTokenAdmin,async (req, res) => {
 
-    console.log('request arrived')
-    routeHandler.postTeamHandler(req, res, new TeamMongodb(), new IdMongodb(""))
+    routeTeamHandler.getTeamsHandler(req, res, new TeamMongodb())
+
 
 })
 
@@ -44,7 +45,7 @@ app.get('/admin', JwtToken.authenticateToken, (req, res) => {
 
 app.delete('/teams/:id', JwtToken.authenticateTokenAdmin,async (req, res) => {
 
-    routeHandler.deleteTeamHandler(req, res, new TeamMongodb())
+    routeTeamHandler.deleteTeamHandler(req, res, new TeamMongodb())
 
 })
 

@@ -21,6 +21,7 @@ export class TeamDataService {
     await lastValueFrom(request).catch(reason => {
       if(reason["status"] !== 200)
       {
+        console.log()
         return {error: true, statuscode: reason["status"], statusText: reason["statusText"]}
       }
       return true
@@ -34,13 +35,10 @@ export class TeamDataService {
   {
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
     let request = this.httpClient.get(environment.serverAddress+'/teams', {headers: headers})
-    await lastValueFrom(request).catch(reason => {
-        return {error: true, statuscode: reason["status"], statusText: reason["statusText"]}
-
-
+    return await lastValueFrom(request).catch(reason => {
+        console.log({error: true, statuscode: reason["status"], statusText: reason["statusText"]})
+      return new Array<{}>()
     })
-
-    return await lastValueFrom(request)
 
   }
 

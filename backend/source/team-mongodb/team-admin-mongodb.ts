@@ -1,4 +1,4 @@
-import {database} from "../database"
+import {database} from "../database/database"
 import {TokenGenerator} from "./token-generator/token-generator";
 
 

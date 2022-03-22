@@ -13,13 +13,21 @@ import {TeamDataService} from "../team-data.service";
 export class TeamOverviewComponent implements OnInit {
 
   displayedColumns = ["#","Team-Name", "Actions"]
+/*
   tableDataSource = new MatTableDataSource([{"id": 1,"teamName": "sony"}])
+*/
+
+  tableDataSource: any = null
 
 
   constructor(private dialog: MatDialog, public teamDataService: TeamDataService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    let teamData =  await this.teamDataService.getTeams()
+    this.tableDataSource = teamData
   }
+
+
 
 
 
@@ -46,5 +54,9 @@ export class TeamOverviewComponent implements OnInit {
 
     await this.teamDataService.deleteTeam(id)
 
+  }
+
+  async test() {
+   console.log(await this.teamDataService.getTeams())
   }
 }

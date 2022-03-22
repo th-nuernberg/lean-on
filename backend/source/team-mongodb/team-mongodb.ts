@@ -1,9 +1,10 @@
 import {ITeamMongodb} from "./iteam-mongodb";
 import {User} from "./user";
-import {database} from "../database"
+import {database} from "../database/database"
 import {IIdMongodb} from "../id-mongodb/iid-mongodb";
 import {ITokenGenerator} from "./token-generator/itoken-generator";
 import {TokenGenerator} from "./token-generator/token-generator";
+import {getAllDatabaseNames} from "../database/getAllDatabaseNames";
 
 interface teamSchema {
     _id: string,
@@ -28,7 +29,24 @@ export class TeamMongodb implements ITeamMongodb {
     deleteUser(teamId: string, userId: string[]) {
     }
 
-    getTeam(teamId: string) {
+    async getTeams() {
+
+        let databaseNames = await getAllDatabaseNames(false)
+        let teamData = []
+
+        for(const databaseName of databaseNames)
+        {
+           let teamDocument = await database.db(databaseName).collection("Team").findOne()
+
+            if(teamDocument)
+            {
+                // @ts-ignore
+                teamDocument['_id'] = teamDocument._id.toString().split("team_")[1]
+                // @ts-ignore
+                teamData.push(teamDocument)
+            }
+        }
+        return teamData
     }
 
 

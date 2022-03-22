@@ -1,5 +1,5 @@
 import {IIdMongodb} from "./iid-mongodb";
-import {database} from "../database";
+import {database} from "../database/database";
 import {ObjectId} from "mongodb";
 
 export {}

@@ -65,5 +65,20 @@ export class RouteTeamHandler {
 
     }
 
+    async getTeamsHandler(req, res, teamMongodb: ITeamMongodb) {
+
+        try
+        {
+            let teams = await teamMongodb.getTeams()
+            res.send(teams)
+
+        }
+        catch(e)
+        {
+            res.sendStatus(400)
+        }
+
+    }
+
 
 }

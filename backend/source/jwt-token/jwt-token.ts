@@ -1,4 +1,5 @@
-import {database} from "../database";
+import {database} from "../database/database";
+import {getAllDatabaseNames} from "../database/getAllDatabaseNames";
 
 require('dotenv').config({path: `${__dirname}\\.env`})
 
@@ -88,24 +89,20 @@ export class JwtToken{
     {
 
 
-        let databaseNameList: any = await database.db().admin().listDatabases({nameOnly: true})
-        databaseNameList = databaseNameList["databases"]
+/*        let databaseNameList: any = await database.db().admin().listDatabases({nameOnly: true})
+        databaseNameList = databaseNameList["databases"]*/
+
+        let databaseNameList = await getAllDatabaseNames(false)
 
 
         for (const databaseName of databaseNameList) {
 
-            let databaseNameString : string = databaseName["name"]
 
-            if(!databaseNameString.includes("team_"))
-            {
-                continue
-            }
-
-            let collection = await database.db(databaseNameString).collection("Team")
+            let collection = await database.db(databaseName).collection("Team")
             let teamName = await collection.findOne({"users.token": token})
             if(teamName)
             {
-                return databaseName["name"]
+                return databaseName
             }
 
         }

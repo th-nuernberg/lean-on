@@ -1,5 +1,6 @@
 <div class="container-fluid">
   <div class="row justify-content-end mt-3 mx-3">
+    <button class="btn" (click)="test()">Test</button>
     <button type="button" (click)="openNewTeamDialog()" class="btn btn-dark button-width-md standard-button mx-3 button-width-md-middle mt-2">+ Team</button>
   </div>
 </div>
@@ -9,12 +10,12 @@
 
     <ng-container matColumnDef="#">
       <mat-header-cell class="font-size-md font-size-xs" *matHeaderCellDef> # </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element._id}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Team-Name">
       <mat-header-cell class="font-size-md font-size-xs"  *matHeaderCellDef> Team-name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.teamName}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.team_name}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Actions">

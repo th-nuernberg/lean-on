@@ -1,4 +1,4 @@
-import {database} from "../source/database";
+import {database} from "../source/database/database";
 
 
 export async function dropDatabases() {
