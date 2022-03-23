@@ -12,7 +12,7 @@ import {AdminCheckoutGuardService} from "./admin-checkout-guard.service";
 
 
 const appRoutes: Routes = [
-  {path: '', component: CheckTokenComponent},
+  {path: '', pathMatch: "full" , redirectTo: '/bmc'},
   {path: 'login/:token', component: CheckTokenComponent},
   {path: 'bmc', component: BMCComponent, canActivate: [TokenGuardService, AdminCheckoutGuardService]},
   {path: 'no-token', component: NoTokenComponent},

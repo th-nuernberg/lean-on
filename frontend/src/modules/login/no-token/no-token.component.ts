@@ -9,6 +9,8 @@ export class NoTokenComponent implements OnInit {
 
   constructor() { }
 
+  content: string = "You are either missing a token or the token is not correct please try again or contact your teacher"
+
   ngOnInit(): void {
   }
 

@@ -20,7 +20,6 @@ export class TokenService{
     let token = window.localStorage.getItem("token")
     if(token)
     {return token}
-    console.log("no Token set")
     return false
   }
 
@@ -32,5 +31,10 @@ export class TokenService{
     }
     return false
   }
-  
+
+  deleteToken()
+  {
+    window.localStorage.removeItem("token")
+  }
+
 }

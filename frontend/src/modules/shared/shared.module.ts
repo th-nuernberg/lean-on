@@ -6,6 +6,7 @@ import {TokenService} from "./token.service";
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatCardModule} from "@angular/material/card";
 
 
 
@@ -17,7 +18,8 @@ import {MatDialogModule} from "@angular/material/dialog";
   ],
     imports: [
         CommonModule,
-        MatDialogModule
+        MatDialogModule,
+        MatCardModule
     ],
   exports: [
     PageNotFoundComponent,

@@ -5,6 +5,8 @@ import {SharedModule} from "../shared/shared.module";
 import {RouterModule} from "@angular/router";
 import {LoginService} from "./login.service";
 import { NoTokenComponent } from './no-token/no-token.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
 
 
 
@@ -17,6 +19,8 @@ import { NoTokenComponent } from './no-token/no-token.component';
   imports: [
     RouterModule,
     CommonModule,
+    MatCardModule,
+    MatButtonModule,
   ],
   exports: [
     CheckTokenComponent,

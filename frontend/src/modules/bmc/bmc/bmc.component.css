@@ -2,7 +2,7 @@
   width: 9.5px;
   height: auto;
 }
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 577px){
 
   .button-width-md
   {

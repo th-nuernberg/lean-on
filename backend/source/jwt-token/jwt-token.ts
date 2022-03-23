@@ -92,7 +92,7 @@ export class JwtToken{
 /*        let databaseNameList: any = await database.db().admin().listDatabases({nameOnly: true})
         databaseNameList = databaseNameList["databases"]*/
 
-        let databaseNameList = await getAllDatabaseNames(false)
+        let databaseNameList = await getAllDatabaseNames()
 
 
         for (const databaseName of databaseNameList) {
