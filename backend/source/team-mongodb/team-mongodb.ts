@@ -36,12 +36,14 @@ export class TeamMongodb implements ITeamMongodb {
 
         for(const databaseName of databaseNames)
         {
-           let teamDocument = await database.db(databaseName).collection("Team").findOne()
+           let teamDocument = await database.db(databaseName).collection("Team").findOne({},{projection: {"users.token":0}})
 
             if(teamDocument)
             {
                 // @ts-ignore
                 teamDocument['_id'] = teamDocument._id.toString().split("team_")[1]
+
+
                 // @ts-ignore
                 teamData.push(teamDocument)
             }

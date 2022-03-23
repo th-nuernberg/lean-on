@@ -19,7 +19,7 @@
 
     <ng-container matColumnDef="Actions">
       <mat-header-cell class="font-size-md font-size-xs"  *matHeaderCellDef> Actions </mat-header-cell>
-      <mat-cell *matCellDef="let element"><div class="d-flex"><img (click)="openTeamDialog()" src="assets/images/icons/baseline_search_black_48dp.png" class="img-check pointer icon-margin-xs"><img (click)="deleteTeam(element._id)" class="img-delete pointer icon-margin-xs" src="assets/images/icons/baseline_delete_black_48dp.png"></div></mat-cell>
+      <mat-cell *matCellDef="let element"><div class="d-flex"><img (click)="openTeamInfoDialog(element.users)" src="assets/images/icons/baseline_search_black_48dp.png" class="img-check pointer icon-margin-xs"><img (click)="deleteTeam(element._id)" class="img-delete pointer icon-margin-xs" src="assets/images/icons/baseline_delete_black_48dp.png"></div></mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

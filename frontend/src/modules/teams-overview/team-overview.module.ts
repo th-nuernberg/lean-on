@@ -11,12 +11,14 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatTableModule} from "@angular/material/table";
 import {TeamDataService} from "./team-data.service";
 import {SharedModule} from "../shared/shared.module";
+import { TeamInfoDialogComponent } from './team-info-dialog/team-info-dialog.component';
 
 
 @NgModule({
   declarations: [
     TeamOverviewComponent,
-    TeamDialogComponent
+    TeamDialogComponent,
+    TeamInfoDialogComponent
   ],
   imports: [
     CommonModule,

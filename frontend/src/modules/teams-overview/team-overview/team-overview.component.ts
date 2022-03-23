@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {TeamDialogComponent} from "../team-dialog/team-dialog.component";
 import {MatTable, MatTableDataSource} from "@angular/material/table";
 import {TeamDataService} from "../team-data.service";
+import {TeamInfoDialogComponent} from "../team-info-dialog/team-info-dialog.component";
 
 @Component({
   selector: 'app-team-overview',
@@ -42,10 +43,6 @@ export class TeamOverviewComponent implements OnInit {
 
   }
 
-  openTeamDialog() {
-
-  }
-
   async deleteTeam(id: number) {
 
     await this.teamDataService.deleteTeam(id)
@@ -54,4 +51,12 @@ export class TeamOverviewComponent implements OnInit {
 
   }
 
+  openTeamInfoDialog(userData) {
+    const dialogRef =
+      this.dialog.open(TeamInfoDialogComponent, {
+        width: "800px",
+        data: userData
+      })
+
+  }
 }
