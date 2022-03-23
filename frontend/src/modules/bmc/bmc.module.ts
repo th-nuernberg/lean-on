@@ -5,6 +5,11 @@ import { BmcCategoryComponent } from './bmc-category/bmc-category.component';
 import { HypothesisCardComponent } from './hypothesis-card/hypothesis-card.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {ReactiveFormsModule} from "@angular/forms";
+import { NewHypothesisDialogComponent } from './new-hypothesis-dialog/new-hypothesis-dialog.component';
+import {MatInputModule} from "@angular/material/input";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 
 
@@ -13,11 +18,16 @@ import {MatDialogModule} from "@angular/material/dialog";
     BMCComponent,
     BmcCategoryComponent,
     HypothesisCardComponent,
+    NewHypothesisDialogComponent,
   ],
   imports: [
     CommonModule,
     MatButtonModule,
     MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatGridListModule,
   ]
 })
 export class BmcModule { }

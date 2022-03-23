@@ -1,7 +1,8 @@
-.upload-img{
+.upload-img {
   width: 9.5px;
   height: auto;
 }
+
 @media only screen and (min-width: 577px){
 
   .button-width-md

@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import {BmcModule} from "./bmc.module";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class HypothesesApiService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
-  test()
+  sentHypothesis(category: string, description: string)
   {
-    console.log("test")
+
   }
+
 }
