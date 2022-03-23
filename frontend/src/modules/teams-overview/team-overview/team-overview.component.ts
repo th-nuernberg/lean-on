@@ -51,11 +51,11 @@ export class TeamOverviewComponent implements OnInit {
 
   }
 
-  openTeamInfoDialog(userData) {
+  openTeamInfoDialog(teamname, userData) {
     const dialogRef =
       this.dialog.open(TeamInfoDialogComponent, {
         width: "800px",
-        data: userData
+        data: {teamname: teamname, users: userData}
       })
 
   }

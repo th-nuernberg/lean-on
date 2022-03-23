@@ -5,20 +5,42 @@
 }
 
 
-.standard-button
-{
+.standard-button {
   background-color: #0046A0 !important;
   color: white !important;
 }
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 /*.mat-dialog-container{
   max-width: 800px;
 }*/
 
-.pointer{
+.pointer {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 576px) {
+
+  mat-cell {
+    font-size: 9pt !important;
+    color: blue;
+  }
+
+  mat-header-row {
+    font-size: 10pt !important;
+  }
+
+  *{
+    font-size: 11pt;
+  }
+
 }

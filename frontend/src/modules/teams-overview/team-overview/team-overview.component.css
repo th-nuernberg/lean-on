@@ -46,6 +46,16 @@
     margin-right: 3px;
   }
 
+  .button-xs{
+    width: 80%;
+  }
+
+  .width-100-xs{
+    width: 100%;
+  }
+
+
+
 
 }
 

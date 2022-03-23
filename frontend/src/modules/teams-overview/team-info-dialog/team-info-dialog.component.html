@@ -1,0 +1,35 @@
+
+<h2 mat-dialog-title>Team-Info</h2>
+<mat-dialog-content>
+<div class="mat-elevation-z4 width-table-xs table-max-width font-size-xs
+ mt-3 mx-auto">
+  <mat-table #table [dataSource]="tableDataSource">
+
+    <ng-container matColumnDef="#">
+      <mat-header-cell class="font-size-md font-size-xs" *matHeaderCellDef> # </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element._id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Firstname">
+      <mat-header-cell class="font-size-md font-size-xs"  *matHeaderCellDef> Firstname </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.firstname}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Lastname">
+      <mat-header-cell class="font-size-md font-size-xs"  *matHeaderCellDef> Lastname </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.lastname}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="E-Mail">
+      <mat-header-cell class="font-size-md font-size-xs"  *matHeaderCellDef> E-Mail </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" >Ok</button>
+</mat-dialog-actions>
