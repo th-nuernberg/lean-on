@@ -1,0 +1,26 @@
+.selected{
+  background-color: #0046A0 !important;
+  color: white !important;
+}
+
+.bg-color-tile{
+  background-color: lightblue;
+}
+
+@media only screen and (max-width: 576px){
+
+
+  .grid-width-xs{
+    width: 100%;
+  }
+
+}
+
+@media only screen and (min-width: 577px){
+
+
+  .grid-width-sm{
+    width: 75%;
+  }
+
+}

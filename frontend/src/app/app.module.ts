@@ -10,6 +10,7 @@ import {RoutingModule} from "../modules/routing/routing.module";
 import {HeaderModule} from "../modules/header/header.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TeamOverviewModule} from "../modules/teams-overview/team-overview.module";
+import {BmcModule} from "../modules/bmc/bmc.module";
 
 
 
@@ -25,7 +26,8 @@ import {TeamOverviewModule} from "../modules/teams-overview/team-overview.module
     RoutingModule,
     HeaderModule,
     BrowserAnimationsModule,
-    TeamOverviewModule
+    TeamOverviewModule,
+    BmcModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi:true}],
   bootstrap: [AppComponent],

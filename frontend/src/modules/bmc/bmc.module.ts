@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { NewHypothesisDialogComponent } from './new-hypothesis-dialog/new-hypothesis-dialog.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {HypothesesDataService} from "./hypothesis-data.service";
 
 
 
@@ -28,6 +29,9 @@ import {MatGridListModule} from "@angular/material/grid-list";
     ReactiveFormsModule,
     MatInputModule,
     MatGridListModule,
+  ],
+  providers: [
+    HypothesesDataService
   ]
 })
 export class BmcModule { }

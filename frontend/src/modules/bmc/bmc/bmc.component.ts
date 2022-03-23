@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenService} from "../../shared/token.service";
-import {HypothesesApiService} from "../hypotheses-api.service";
+import {HypothesesDataService} from "../hypothesis-data.service";
 import {MatDialog} from "@angular/material/dialog";
 import {TeamDialogComponent} from "../../teams-overview/team-dialog/team-dialog.component";
 import {NewHypothesisDialogComponent} from "../new-hypothesis-dialog/new-hypothesis-dialog.component";
@@ -9,11 +9,11 @@ import {NewHypothesisDialogComponent} from "../new-hypothesis-dialog/new-hypothe
   selector: 'app-bmc',
   templateUrl: './bmc.component.html',
   styleUrls: ['./bmc.component.css'],
-  providers: [HypothesesApiService]
+  providers: []
 })
 export class BMCComponent implements OnInit {
 
-  constructor(private tokenService: TokenService, private hypothesesApi: HypothesesApiService,
+  constructor(private tokenService: TokenService, private hypothesesDataService: HypothesesDataService,
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
