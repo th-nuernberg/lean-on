@@ -11,18 +11,18 @@ export class TeamDataService {
 
   constructor(private httpClient: HttpClient) { }
 
-  async sentTeam(teamName: string, users: [{firstname: string, lastname: string, email: string}])
+  async postTeam(teamName: string, users: [{firstname: string, lastname: string, email: string}])
   {
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
 
     const body = {teamName : teamName ,users: users}
 
-    let request = this.httpClient.post(environment.serverAddress+'/team', body, {headers: headers, observe:'response'} )
+    let request = this.httpClient.post(environment.serverAddress+'/team', body, {headers: headers} )
     await lastValueFrom(request).catch(reason => {
       if(reason["status"] !== 200)
       {
-        console.log()
-        return {error: true, statuscode: reason["status"], statusText: reason["statusText"]}
+        console.log({error: true, statuscode: reason["status"], statusText: reason["statusText"]})
+        return false
       }
       return true
 

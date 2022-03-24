@@ -1,14 +1,17 @@
-import {ITeamMongodb} from "../team-mongodb/iteam-mongodb";
-import {IIdMongodb} from "../id-mongodb/iid-mongodb";
-import {IdMongodb} from "../id-mongodb/id-mongodb";
+import {ITeamMongodb} from "../iteam-mongodb";
+import {IIdMongodb} from "../../id-mongodb/iid-mongodb";
+import {IdMongodb} from "../../id-mongodb/id-mongodb";
 import _ from "lodash";
+import {IRouteTeamHandler} from "./I-route-team-handler";
 
-export class RouteTeamHandler {
+export class RouteTeamHandler implements IRouteTeamHandler{
 
-    async postTeamHandler(req, res, teamMongodb: ITeamMongodb, idGetter: IIdMongodb) {
+    async postTeam(req, res, teamMongodb: ITeamMongodb, idGetter: IIdMongodb) {
 
         let title
         let users
+
+        console.log(req)
 
         try {
             if (req.admin !== "true") {
@@ -44,7 +47,7 @@ export class RouteTeamHandler {
 
     }
 
-    async deleteTeamHandler(req, res, teamMongodb: ITeamMongodb) {
+    async deleteTeam(req, res, teamMongodb: ITeamMongodb) {
 
         try
         {
@@ -65,7 +68,7 @@ export class RouteTeamHandler {
 
     }
 
-    async getTeamsHandler(req, res, teamMongodb: ITeamMongodb) {
+    async getTeams(req, res, teamMongodb: ITeamMongodb) {
 
         try
         {

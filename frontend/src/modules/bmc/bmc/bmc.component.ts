@@ -19,11 +19,8 @@ export class BMCComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openHypoDialog() {
 
-  }
-
-  openEvidenceDialog() {
+  openHypothesisDialog() {
     const dialogRef =
       this.dialog.open(NewHypothesisDialogComponent, {
         width: "800px"

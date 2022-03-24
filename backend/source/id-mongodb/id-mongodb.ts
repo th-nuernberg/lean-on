@@ -34,8 +34,6 @@ export class IdMongodb implements IIdMongodb{
 
     async getNextTeamId(): Promise<number | boolean>  {
 
-        await database.connect()
-
         let databaseNames = await database.db().admin().listDatabases({nameOnly: true})
         let teamAmount = this.checkHowManyTeamDatabasesExist(databaseNames["databases"])
 
@@ -98,8 +96,16 @@ export class IdMongodb implements IIdMongodb{
         return Promise.resolve(false);
     }
 
-    getNextHypothesisId(): Promise<number | boolean> {
-        return Promise.resolve(false);
+    async getNextHypothesisId(): Promise<number | boolean> {
+        let idDocument = await database.db(this._databaseName).collection(idCollectionName).findOne()
+        if(!idDocument) {
+            return Promise.resolve(false)
+        }
+        let nextHypoId = idDocument["hypothesis"]
+        await database.db(this._databaseName).collection(idCollectionName).updateOne({_id: idCollectionName}, {$set: {hypothesis: nextHypoId+1}})
+        return nextHypoId
+
+
     }
 
     getNextRatingId(): Promise<number | boolean> {

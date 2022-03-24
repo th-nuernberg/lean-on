@@ -8,7 +8,7 @@ export interface ITeamMongodb
     postTeam(teamTitle: string, users: {firstname: string, lastname: string, email:string }[], teamId: string, idGetter: IIdMongodb)
     deleteUser(teamId: string, userId: string[])
 
-    postUser(teamId: string, user: User)
+    postUser(teamId: string)
 
     putTeamTitle(teamId: string, newTitle: string)
 

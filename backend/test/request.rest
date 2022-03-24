@@ -46,10 +46,17 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtTmFtZSI6eyJuY
 POST http://localhost:3000/team
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtTmFtZSI6eyJuYW1lIjoidGVhbV8yIn0sImlhdCI6MTY0NTIxNzI4MX0.t38sNxK8zTCvPLSU-6cRteto3K68wQIMNI8IP10Usyk
 
-###RightTeamRequest
+###Check For Wrong Category in Hypothesis
 
-POST http://localhost:3000/team
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJTZWJhc3RpYW4iLCJzdXJuYW1lIjoiR3VyZHVsaWMiLCJ0ZWFtIjoidGVhbV80IiwiYWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NTYzMTg3NH0.MOjyUHMYHXsnwnsGYr9Ds-TqQx4k9lEy4O2ixDYU1AU
+POST http://localhost:3000/hypothesis
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJMZW9uaWUiLCJsYXN0bmFtZSI6IkNvbmNoaXRhIiwidGVhbSI6InRlYW1fMSIsImFkbWluIjoiZmFsc2UiLCJpYXQiOjE2NDgxMjU3Nzd9.NE-crMKR7-rtesOejLj_a7WS1os9X4oIonGwHcoug_Y
+Content-Type: application/json
+
+{
+  "category": "Sony",
+  "description": "bla bla"
+
+}
 
 
 ###CheckForAdmin False

@@ -59,7 +59,7 @@ export class TeamDialogComponent implements OnInit {
   sentTeamData()
   {
     // @ts-ignore
-    this.teamDataService.sentTeam(this.formGroup.get('team-name')?.value, this.usersDataSource.data)
+    this.teamDataService.postTeam(this.formGroup.get('team-name')?.value, this.usersDataSource.data)
   }
 
   teamNameEmpty()

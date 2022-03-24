@@ -1,5 +1,4 @@
 import {ITeamMongodb} from "./iteam-mongodb";
-import {User} from "./user";
 import {database} from "../database/database"
 import {IIdMongodb} from "../id-mongodb/iid-mongodb";
 import {ITokenGenerator} from "./token-generator/itoken-generator";
@@ -52,7 +51,7 @@ export class TeamMongodb implements ITeamMongodb {
     }
 
 
-    postUser(teamId: string, user: User) {
+    postUser(teamId: string) {
     }
 
     putTeamTitle(teamId: string, newTitle: string) {
