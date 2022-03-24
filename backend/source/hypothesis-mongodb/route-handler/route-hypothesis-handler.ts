@@ -12,7 +12,10 @@ export class RouteHypothesisHandler implements IRouteHypothesisHandler{
         if(checkHypothesisBody(req))
         {
            let result = await hypothesisMongoDb.postHypothesis(req.team, req.body.description, req.body.category, new IdMongodb(req.team))
-            console.log(result)
+            if(result)
+            {
+                res.sendStatus(200)
+            }
         }
         else
         {
