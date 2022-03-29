@@ -24,4 +24,17 @@ export class HypothesesDataService {
 
   }
 
+  async getAllHypothesis()
+  {
+    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+    let request = await this.httpClient.get(environment.serverAddress + "/hypotheses", {headers: headers})
+
+   let hypothesis = await lastValueFrom(request).catch(reason => {
+      console.log({error: true, statuscode: reason["status"], statusText: reason["statusText"]})
+      return false
+    })
+
+    return hypothesis
+  }
+
 }

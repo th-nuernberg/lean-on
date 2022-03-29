@@ -1,1 +1,14 @@
-<p>hypothesis-card works!</p>
+<div class="card">
+  <div class="card-body">
+    <div class="card-header row">
+      <div>
+        {{rating}}
+      </div>
+      <div [ngClass]="setHypothesisStatus()">
+
+      </div>
+    </div>
+    <div class="card-text">{{description}}
+    </div>
+  </div>
+</div>

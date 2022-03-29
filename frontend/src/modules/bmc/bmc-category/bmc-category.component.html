@@ -1,5 +1,10 @@
-<div class=" border-white-bottom d-flex justify-content-start w-100 h-100 flex-column">
-  <div class="bg-color-standard text-white w-100 border-4 ">
+<div class="d-flex justify-content-start w-100 h-100 flex-column border-white-bottom">
+  <div class="bg-color-standard text-white w-100 p-1">
     {{categoryName}}
   </div>
+  <app-hypothesis-card *ngFor="let hypothesis of hypotheses"
+                       [description]="hypothesis.description"
+                       [rating]="this.ratingCalculator.computeRatingValue(hypothesis)"
+                       [validationStatus]="'experimental'"
+  ></app-hypothesis-card>
 </div>

@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Hypothesis} from "../models/hypothesis";
+import {HypoRatingCalculatorService} from "../hypo-rating-calculator.service";
 
 @Component({
   selector: 'app-bmc-category',
@@ -7,10 +9,10 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class BmcCategoryComponent implements OnInit {
 
-  @Input() hypotheses = []
+  @Input() hypotheses: Hypothesis[] = []
   @Input() categoryName: string = ""
 
-  constructor() { }
+  constructor(public ratingCalculator: HypoRatingCalculatorService) { }
 
   ngOnInit(): void {
   }

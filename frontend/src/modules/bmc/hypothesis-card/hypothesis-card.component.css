@@ -1,0 +1,11 @@
+.status-validated{
+  background-color: green;
+}
+
+.status-experimental{
+  background-color: grey;
+}
+
+.status-rejected{
+  background-color: red;
+}

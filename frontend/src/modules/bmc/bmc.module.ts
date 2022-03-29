@@ -11,6 +11,7 @@ import { NewHypothesisDialogComponent } from './new-hypothesis-dialog/new-hypoth
 import {MatInputModule} from "@angular/material/input";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {HypothesesDataService} from "./hypothesis-data.service";
+import {HypoRatingCalculatorService} from "./hypo-rating-calculator.service";
 
 
 
@@ -31,7 +32,8 @@ import {HypothesesDataService} from "./hypothesis-data.service";
     MatGridListModule,
   ],
   providers: [
-    HypothesesDataService
+    HypothesesDataService,
+    HypoRatingCalculatorService
   ]
 })
 export class BmcModule { }
