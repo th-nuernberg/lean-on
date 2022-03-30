@@ -4,6 +4,8 @@ import {IIdMongodb} from "../id-mongodb/iid-mongodb";
 import {ITokenGenerator} from "./token-generator/itoken-generator";
 import {TokenGenerator} from "./token-generator/token-generator";
 import {getAllDatabaseNames} from "../database/getAllDatabaseNames";
+import {CommitSchema} from "../commit-mongodb/commit-schema";
+import {ICommitMongodb} from "../commit-mongodb/i-commit-mongodb";
 
 interface teamSchema {
     _id: string,
@@ -57,9 +59,10 @@ export class TeamMongodb implements ITeamMongodb {
     putTeamTitle(teamId: string, newTitle: string) {
     }
 
-    async postTeam(teamTitle: string, users: { firstname: string, lastname: string, email: string }[], teamId: string, idGetter: IIdMongodb) {
+    async postTeam(teamTitle: string, users: { firstname: string, lastname: string, email: string }[], teamId: string, idGetter: IIdMongodb, commitMongoDb : ICommitMongodb) {
 
         await idGetter.postIdInitializeDocument()
+        await commitMongoDb.postInitCommit()
 
         let usersWithId = await this.giveUserId(users, idGetter)
         if (!usersWithId) {
@@ -71,6 +74,7 @@ export class TeamMongodb implements ITeamMongodb {
 
         try {
             await database.db(teamId).collection<teamSchema>(teamCollectionName).insertOne(document)
+
         } catch (e) {
             console.log(e)
         }

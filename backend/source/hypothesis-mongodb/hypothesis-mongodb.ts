@@ -1,20 +1,17 @@
 import {database} from "../database/database"
 import {IHypothesisMongodb} from "./i-hypothesis-mongodb";
 import {IIdMongodb} from "../id-mongodb/iid-mongodb";
+import {HypothesisSchema} from "./hypothesis-model";
 
 const collectionName = "Hypothesis"
 
-interface hypothesisSchema{
-    _id: string,
-    category: string,
-    description: string,
-    ratings: []
-}
+
 
 export class HypothesisMongodb implements IHypothesisMongodb{
 
 
     getAllHypothesis() {
+
     }
 
     getHypothesis(id: string) {
@@ -24,7 +21,7 @@ export class HypothesisMongodb implements IHypothesisMongodb{
         try{
             let id = await idGetter.getNextHypothesisId()
             let idString = "hypo_"+id
-            let result =  await database.db(teamName).collection<hypothesisSchema>(collectionName).insertOne({_id: idString, category: category, description: description, ratings: []}).catch(reason => {
+            let result =  await database.db(teamName).collection<HypothesisSchema>(collectionName).insertOne({_id: idString, category: category, description: description, ratings: []}).catch(reason => {
                 return false
             })
             return true

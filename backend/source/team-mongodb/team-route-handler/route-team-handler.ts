@@ -3,6 +3,7 @@ import {IIdMongodb} from "../../id-mongodb/iid-mongodb";
 import {IdMongodb} from "../../id-mongodb/id-mongodb";
 import _ from "lodash";
 import {IRouteTeamHandler} from "./I-route-team-handler";
+import {CommitMongodb} from "../../commit-mongodb/commit-mongodb";
 
 export class RouteTeamHandler implements IRouteTeamHandler{
 
@@ -37,7 +38,7 @@ export class RouteTeamHandler implements IRouteTeamHandler{
         let teamIdString = "team_" + teamId.toString()
 
         try {
-            await teamMongodb.postTeam(title, users, teamIdString, new IdMongodb(teamIdString))
+            await teamMongodb.postTeam(title, users, teamIdString, new IdMongodb(teamIdString), new CommitMongodb(teamIdString))
         } catch (e) {
             console.log(e)
             res.sendStatus(500)
