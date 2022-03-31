@@ -19,9 +19,9 @@ export class HypothesisMongodb implements IHypothesisMongodb{
 
     async postHypothesis(teamName: string,description: string, category: string, idGetter: IIdMongodb) {
         try{
-            let id = await idGetter.getNextHypothesisId()
+            let id = await idGetter.getNextId("hypothesis")
             let idString = "hypo_"+id
-            let result =  await database.db(teamName).collection<HypothesisSchema>(collectionName).insertOne({_id: idString, category: category, description: description, ratings: []}).catch(reason => {
+            let result =  await database.db(teamName).collection<HypothesisSchema>(collectionName).insertOne({_id: idString, category: category, description: description, ratings: [], base_hypothesis: idString}).catch(reason => {
                 return false
             })
             return true

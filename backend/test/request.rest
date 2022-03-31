@@ -87,3 +87,8 @@ Content-Type: application/json
 
   ]
 }
+
+###CheckForAdmin True
+GET http://localhost:3000/test
+
+

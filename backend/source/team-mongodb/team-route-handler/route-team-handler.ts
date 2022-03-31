@@ -12,8 +12,6 @@ export class RouteTeamHandler implements IRouteTeamHandler{
         let title
         let users
 
-        console.log(req)
-
         try {
             if (req.admin !== "true") {
                 res.sendStatus(401)

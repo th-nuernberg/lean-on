@@ -86,7 +86,7 @@ export class TeamMongodb implements ITeamMongodb {
         let usersWithId: object[] = []
         let userId: number | boolean
         for (let user of users) {
-            userId = await idGetter.getNextUserId()
+            userId = await idGetter.getNextId("user")
             if (userId) {
                 usersWithId.push({
                     _id: userId,

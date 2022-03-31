@@ -3,4 +3,5 @@ export interface HypothesisSchema{
     category: string,
     description: string,
     ratings: []
+    base_hypothesis: string,
 }

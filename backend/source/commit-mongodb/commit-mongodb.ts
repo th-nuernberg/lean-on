@@ -23,17 +23,39 @@ export class CommitMongodb implements ICommitMongodb{
 
     }
 
-    updateCommit(title: string, date: Date) {
+    putCommit(title: string, date: Date) {
     }
 
-    updateEvidenceInCommit(id: string, newEvidence: ArticleSchema | InterviewSchema) {
-    }
-
-    updateHypothesisInCommit(id: string, newHypothesis: HypothesisSchema) {
-    }
 
     async postInitCommit() {
         await database.db(this.databaseName).collection<CommitSchema>(commitCollectionName).insertOne({_id: "commit_1", title: "", date: "",hypotheses: [], evidences: []})
+
+    }
+
+    deleteEvidenceInCommit(idString: string) {
+    }
+
+    deleteHypothesisInCommit(idString: string) {
+    }
+
+    getHypothesisFromCommit(hypoIdString: string, commitIdString: string) {
+    }
+
+    postEvidenceToCommit(newEvidence: ArticleSchema | InterviewSchema) {
+    }
+
+    postHypothesisToCommit(hypothesis: HypothesisSchema) {
+
+    }
+
+    putEvidenceToCommit(newEvidence: ArticleSchema | InterviewSchema) {
+    }
+
+    putHypothesisToCommit(hypothesis: HypothesisSchema) {
+    }
+
+    private getCurrentCommitId()
+    {
 
     }
 

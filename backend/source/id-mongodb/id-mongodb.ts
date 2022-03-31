@@ -55,17 +55,6 @@ export class IdMongodb implements IIdMongodb{
 
     }
 
-    async getNextUserId(): Promise<number | boolean> {
-       let idDocument = await database.db(this._databaseName).collection(idCollectionName).findOne()
-        if(!idDocument)
-        {
-            return Promise.resolve(false)
-        }
-        let currentUserId = idDocument["user"]
-        await database.db(this._databaseName).collection(idCollectionName).updateOne({_id: idCollectionName}, {$set: {user: currentUserId+1}})
-        return Promise.resolve(currentUserId)
-    }
-
     async postIdInitializeDocument() {
         let collection = await database.db(this._databaseName).collection<customIdIdStorage>(idCollectionName)
         try{
@@ -88,28 +77,28 @@ export class IdMongodb implements IIdMongodb{
 
     }
 
-    getNextCommitId(): Promise<number | boolean> {
-        return Promise.resolve(false);
-    }
-
-    getNextEvidenceId(): Promise<number | boolean> {
-        return Promise.resolve(false);
-    }
-
-    async getNextHypothesisId(): Promise<number | boolean> {
-        let idDocument = await database.db(this._databaseName).collection(idCollectionName).findOne()
-        if(!idDocument) {
-            return Promise.resolve(false)
+    async getCurrentId(entityName: string): Promise<number | boolean> {
+        let idObject = await database.db(this._databaseName).collection(idCollectionName).findOne()
+        if(idObject)
+        {
+            return idObject[entityName]
         }
-        let nextHypoId = idDocument["hypothesis"]
-        await database.db(this._databaseName).collection(idCollectionName).updateOne({_id: idCollectionName}, {$set: {hypothesis: nextHypoId+1}})
-        return nextHypoId
 
-
+        return false
     }
 
-    getNextRatingId(): Promise<number | boolean> {
-        return Promise.resolve(false);
+    async getNextId(entityName: string) : Promise<number | boolean>
+    {
+        let currentId = await this.getCurrentId(entityName)
+        if(currentId)
+        {
+            let setObject = {$set : {}}
+            // @ts-ignore
+            setObject["$set"][entityName] = currentId +1
+            await database.db(this._databaseName).collection(idCollectionName).updateOne({},setObject)
+            return currentId
+        }
+        return false
     }
 
 

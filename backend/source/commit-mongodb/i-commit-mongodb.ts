@@ -10,13 +10,28 @@ export interface ICommitMongodb{
 
     postInitCommit()
 
-    updateCommit(title: string, date: Date)
+    putCommit(title: string, date: Date)
 
     getCommit(id: string)
 
-    updateHypothesisInCommit(id: string, newHypothesis: HypothesisSchema)
+    postHypothesisToCommit(hypothesis: HypothesisSchema)
 
-    updateEvidenceInCommit(id: string, newEvidence: ArticleSchema | InterviewSchema)
+    putHypothesisToCommit(hypothesis: HypothesisSchema)
+
+    deleteHypothesisInCommit(idString: string)
+
+    putEvidenceToCommit(newEvidence: ArticleSchema | InterviewSchema)
+
+    postEvidenceToCommit(newEvidence: ArticleSchema | InterviewSchema)
+
+    deleteEvidenceInCommit(idString: string)
+
+    getHypothesisFromCommit(hypoIdString: string, commitIdString: string)
+
+
+
+
+
 
 
 

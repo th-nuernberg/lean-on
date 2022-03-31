@@ -98,4 +98,11 @@ app.post("/hypothesis",JwtToken.authenticateToken, async (req, res) => {
 })
 
 
+app.get("/test", async (req,res)=> {
+
+    let idGetter = new IdMongodb("team_9")
+    res.sendStatus(200)
+})
+
+
 app.listen(3000)
