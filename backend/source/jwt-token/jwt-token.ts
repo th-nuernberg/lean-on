@@ -1,5 +1,5 @@
 import {database} from "../database/database";
-import {getAllDatabaseNames} from "../database/getAllDatabaseNames";
+import {getAllTeamDatabaseNames} from "../database/getAllUserDatabaseNames";
 
 require('dotenv').config({path: `${__dirname}\\.env`})
 
@@ -92,7 +92,7 @@ export class JwtToken{
 /*        let databaseNameList: any = await database.db().admin().listDatabases({nameOnly: true})
         databaseNameList = databaseNameList["databases"]*/
 
-        let databaseNameList = await getAllDatabaseNames()
+        let databaseNameList = await getAllTeamDatabaseNames()
 
 
         for (const databaseName of databaseNameList) {

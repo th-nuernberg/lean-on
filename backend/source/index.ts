@@ -7,6 +7,8 @@ import {setTeamAdmin} from "./team-mongodb/team-admin-mongodb"
 import {RouteHypothesisHandler} from "./hypothesis-mongodb/route-handler/route-hypothesis-handler";
 import {HypothesisMongodb} from "./hypothesis-mongodb/hypothesis-mongodb";
 import {CommitMongodb} from "./commit-mongodb/commit-mongodb";
+import {getAllDatabaseNames, getAllTeamDatabaseNames} from "./database/getAllUserDatabaseNames";
+
 
 const express = require("express")
 const app = express()
@@ -101,7 +103,9 @@ app.post("/hypothesis",JwtToken.authenticateToken, async (req, res) => {
 
 app.get("/test", async (req,res)=> {
 
-    let idGetter = new IdMongodb("team_9")
+    console.log("hi")
+    let result = await getAllTeamDatabaseNames(false)
+    console.log(result)
     res.sendStatus(200)
 })
 

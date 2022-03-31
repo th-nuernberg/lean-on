@@ -3,7 +3,7 @@ import {database} from "../database/database"
 import {IIdMongodb} from "../id-mongodb/iid-mongodb";
 import {ITokenGenerator} from "./token-generator/itoken-generator";
 import {TokenGenerator} from "./token-generator/token-generator";
-import {getAllDatabaseNames} from "../database/getAllDatabaseNames";
+import {getAllTeamDatabaseNames} from "../database/getAllUserDatabaseNames";
 import {CommitSchema} from "../commit-mongodb/commit-schema";
 import {ICommitMongodb} from "../commit-mongodb/i-commit-mongodb";
 
@@ -32,7 +32,7 @@ export class TeamMongodb implements ITeamMongodb {
 
     async getTeams() {
 
-        let databaseNames = await getAllDatabaseNames(false)
+        let databaseNames = await getAllTeamDatabaseNames(false)
         let teamData = []
 
         for(const databaseName of databaseNames)
