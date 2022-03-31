@@ -6,6 +6,7 @@ import {TeamMongodb} from "./team-mongodb/team-mongodb";
 import {setTeamAdmin} from "./team-mongodb/team-admin-mongodb"
 import {RouteHypothesisHandler} from "./hypothesis-mongodb/route-handler/route-hypothesis-handler";
 import {HypothesisMongodb} from "./hypothesis-mongodb/hypothesis-mongodb";
+import {CommitMongodb} from "./commit-mongodb/commit-mongodb";
 
 const express = require("express")
 const app = express()
@@ -92,7 +93,7 @@ app.get("/hypothesis/:id", async (req, res) => {
 app.post("/hypothesis",JwtToken.authenticateToken, async (req, res) => {
 
     const routeHypothesisHandler = new RouteHypothesisHandler()
-    routeHypothesisHandler.postHypothesis(req, res, new HypothesisMongodb())
+    routeHypothesisHandler.postHypothesis(req, res, new HypothesisMongodb(), new CommitMongodb(req.team))
 
 
 })

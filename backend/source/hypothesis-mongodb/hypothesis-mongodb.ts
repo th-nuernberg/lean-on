@@ -21,10 +21,12 @@ export class HypothesisMongodb implements IHypothesisMongodb{
         try{
             let id = await idGetter.getNextId("hypothesis")
             let idString = "hypo_"+id
-            let result =  await database.db(teamName).collection<HypothesisSchema>(collectionName).insertOne({_id: idString, category: category, description: description, ratings: [], base_hypothesis: idString}).catch(reason => {
+            let hypothesisDocument = {_id: idString, category: category, description: description, ratings: [], base_hypothesis: idString}
+            // @ts-ignore
+            let result =  await database.db(teamName).collection<HypothesisSchema>(collectionName).insertOne(hypothesisDocument).catch(reason => {
                 return false
             })
-            return true
+            return hypothesisDocument
         }
         catch (e)
         {

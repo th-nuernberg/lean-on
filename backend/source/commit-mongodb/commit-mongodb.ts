@@ -4,6 +4,7 @@ import {ArticleSchema} from "../evidence-mongodb/article-schema";
 import {InterviewSchema} from "../evidence-mongodb/interview-schema";
 import {HypothesisSchema} from "../hypothesis-mongodb/hypothesis-model";
 import {CommitSchema} from "./commit-schema";
+import {IIdMongodb} from "../id-mongodb/iid-mongodb";
 
 const commitCollectionName= "Commit"
 
@@ -44,7 +45,12 @@ export class CommitMongodb implements ICommitMongodb{
     postEvidenceToCommit(newEvidence: ArticleSchema | InterviewSchema) {
     }
 
-    postHypothesisToCommit(hypothesis: HypothesisSchema) {
+    async postHypothesisToCommit(hypothesis: HypothesisSchema, idGetter: IIdMongodb) {
+
+        let currentCommit = await idGetter.getCurrentId("commit")
+        let currentCommitString = "commit_"+currentCommit
+        let result = await database.db(this.databaseName).collection(commitCollectionName).updateOne({_id: currentCommitString},{$push:{ hypotheses: hypothesis}})
+        return result.modifiedCount === 1
 
     }
 
