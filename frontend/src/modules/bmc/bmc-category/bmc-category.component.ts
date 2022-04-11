@@ -9,12 +9,13 @@ import {HypoRatingCalculatorService} from "../hypo-rating-calculator.service";
 })
 export class BmcCategoryComponent implements OnInit {
 
-  @Input() hypotheses: Hypothesis[] = []
+  @Input() hypotheses: Array<Hypothesis> = []
   @Input() categoryName: string = ""
 
   constructor(public ratingCalculator: HypoRatingCalculatorService) { }
 
   ngOnInit(): void {
+    console.log(this.hypotheses)
   }
 
 }

@@ -40,7 +40,6 @@ export class CommitMongodb implements ICommitMongodb{
     }
 
 
-    //set commitIdString to current to get the current commit hypotheses
     async getAllHypothesesInCommit(commitIdString: string) {
 
         let hypotheses = await database.db(this.databaseName).collection(commitCollectionName).findOne({_id: commitIdString},{projection:{hypotheses: 1, _id: 0}})
