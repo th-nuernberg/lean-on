@@ -5,8 +5,12 @@ import {ObjectId} from "mongodb";
 export {}
 
 const idCollectionName = "IdStorage"
+const counterDatabaseName = "database_counter"
+const counterDatabaseField = "databases"
 
-export interface IdCount{
+require('dotenv').config()
+
+export interface IdCount {
     readonly commit: number,
     readonly evidence: number,
     readonly hypothesis: number,
@@ -14,7 +18,7 @@ export interface IdCount{
     readonly rating: number,
 }
 
-interface customIdIdStorage{
+interface customIdIdStorage {
     _id: string,
     commit: number,
     user: number,
@@ -23,7 +27,7 @@ interface customIdIdStorage{
     rating: number
 }
 
-export class IdMongodb implements IIdMongodb{
+export class IdMongodb implements IIdMongodb {
 
     private _databaseName: string;
 
@@ -32,46 +36,52 @@ export class IdMongodb implements IIdMongodb{
     }
 
 
-    async getNextTeamId(): Promise<number | boolean>  {
+    async getNextTeamId(): Promise<number | boolean> {
 
-        let databaseNames = await database.db().admin().listDatabases({nameOnly: true})
-        let teamAmount = this.checkHowManyTeamDatabasesExist(databaseNames["databases"])
+        let databaseCounterName = counterDatabaseName
 
-        return Promise.resolve(teamAmount);
+        if (databaseCounterName) {
+            let teamId = await database.db(databaseCounterName).collection(databaseCounterName).findOne()
+            if (teamId) {
+                let teamIdCount = teamId[counterDatabaseField]
+                let updateObject = {$set: {}}
+                updateObject["$set"][counterDatabaseField] = teamIdCount + 1
+
+                await database.db(databaseCounterName).collection(databaseCounterName).updateOne({}, updateObject)
+                return teamIdCount
+
+            }
+
+        }
+        return false
     }
 
-    private checkHowManyTeamDatabasesExist(databaseNames: Array<{name:string}>){
+    async getCurrentTeamId() {
 
-        let counter = 0
-
-        for(let databases of databaseNames)
-        {
-            if(databases["name"].includes("team_"))
-            {
-                counter++;
-            }
+        let currentTeamId = await database.db(counterDatabaseName).collection(counterDatabaseName).findOne()
+        if (currentTeamId) {
+            return currentTeamId[counterDatabaseField]
         }
-        return counter
+        return false
+
 
     }
 
     async postIdInitializeDocument() {
         let collection = await database.db(this._databaseName).collection<customIdIdStorage>(idCollectionName)
-        try{
+        try {
             await collection.insertOne({
-                _id:  idCollectionName,
-                commit: 1,
-                user: 1,
-                evidence: 1,
-                hypothesis: 1,
-                rating: 1,
-            },
+                    _id: idCollectionName,
+                    commit: 1,
+                    user: 1,
+                    evidence: 1,
+                    hypothesis: 1,
+                    rating: 1,
+                },
                 {
                     forceServerObjectId: false
                 })
-        }
-        catch (e)
-        {
+        } catch (e) {
             console.log(e)
         }
 
@@ -79,32 +89,28 @@ export class IdMongodb implements IIdMongodb{
 
     async getCurrentId(entityName: string): Promise<number | boolean> {
         let idObject = await database.db(this._databaseName).collection(idCollectionName).findOne()
-        if(idObject)
-        {
+        if (idObject) {
             return idObject[entityName]
         }
 
         return false
     }
 
-    async getNextId(entityName: string) : Promise<number | boolean>
-    {
+    async getNextId(entityName: string): Promise<number | boolean> {
         let currentId = await this.getCurrentId(entityName)
-        if(currentId)
-        {
-            let setObject = {$set : {}}
+        if (currentId) {
+            let setObject = {$set: {}}
             // @ts-ignore
-            setObject["$set"][entityName] = currentId +1
-            await database.db(this._databaseName).collection(idCollectionName).updateOne({},setObject)
+            setObject["$set"][entityName] = currentId + 1
+            await database.db(this._databaseName).collection(idCollectionName).updateOne({}, setObject)
             return currentId
         }
         return false
     }
 
 
-
 }
 
-module.exports= {
+module.exports = {
     IdMongodb
 }

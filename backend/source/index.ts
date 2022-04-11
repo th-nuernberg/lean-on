@@ -8,6 +8,7 @@ import {RouteHypothesisHandler} from "./hypothesis-mongodb/route-handler/route-h
 import {HypothesisMongodb} from "./hypothesis-mongodb/hypothesis-mongodb";
 import {CommitMongodb} from "./commit-mongodb/commit-mongodb";
 import {getAllDatabaseNames, getAllTeamDatabaseNames} from "./database/getAllUserDatabaseNames";
+import {setUpTeamCounter} from "./database/set-up-team-counter";
 
 
 const express = require("express")
@@ -25,6 +26,7 @@ require('dotenv').config({path: `${__dirname}\.env`})
 
 database.connect()
 setTeamAdmin()
+setUpTeamCounter()
 
 
 app.post('/team', JwtToken.authenticateTokenAdmin, async (req, res) => {
@@ -84,7 +86,11 @@ app.post("/evidence", async (req, res) => {
 
 })
 
-app.get("/hypotheses", async (req, res) => {
+app.get("/hypotheses", JwtToken.authenticateToken, async (req, res) => {
+
+    let hypothesesRouteHandler = new RouteHypothesisHandler()
+    hypothesesRouteHandler.getAllCurrentHypotheses(req, res, new CommitMongodb(req.team),new IdMongodb(req.team))
+
 
 })
 
@@ -103,9 +109,8 @@ app.post("/hypothesis",JwtToken.authenticateToken, async (req, res) => {
 
 app.get("/test", async (req,res)=> {
 
-    console.log("hi")
-    let result = await getAllTeamDatabaseNames(false)
-    console.log(result)
+        let commitMongodb = new CommitMongodb("team_2")
+        let hypotheses = await commitMongodb.getAllHypothesesInCommit("commit_1")
     res.sendStatus(200)
 })
 

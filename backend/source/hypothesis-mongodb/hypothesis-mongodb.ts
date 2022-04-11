@@ -12,6 +12,7 @@ export class HypothesisMongodb implements IHypothesisMongodb{
 
     getAllHypothesis() {
 
+
     }
 
     getHypothesis(id: string) {

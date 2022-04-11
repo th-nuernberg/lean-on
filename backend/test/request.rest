@@ -91,4 +91,8 @@ Content-Type: application/json
 ###CheckForAdmin True
 GET http://localhost:3000/test
 
+###CheckForHypotheses
+GET http://localhost:3000/hypotheses
+authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJhc2YiLCJsYXN0bmFtZSI6ImFzZmQiLCJ0ZWFtIjoidGVhbV8yIiwiYWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0OTY4OTQ2Nn0.9y8Z3RSeL7wQ-6M6gVr-06ihTzpiSfXb2cAHHzSqEME
+
 

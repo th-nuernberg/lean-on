@@ -9,4 +9,6 @@ export interface IIdMongodb{
     getNextId(entityName: string): Promise<number | boolean>
 
     getCurrentId(entityName: string) : Promise<number | boolean>
+
+
 }

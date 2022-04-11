@@ -1,15 +1,15 @@
-import {ICommitMongodb} from "./i-commit-mongodb";
+import {CommitSchema, ICommitMongodb} from "./i-commit-mongodb";
 import {database} from "../database/database";
 import {ArticleSchema} from "../evidence-mongodb/article-schema";
 import {InterviewSchema} from "../evidence-mongodb/interview-schema";
 import {HypothesisSchema} from "../hypothesis-mongodb/hypothesis-model";
-import {CommitSchema} from "./commit-schema";
 import {IIdMongodb} from "../id-mongodb/iid-mongodb";
 
 const commitCollectionName= "Commit"
 
 
 export class CommitMongodb implements ICommitMongodb{
+
 
 
 
@@ -39,7 +39,20 @@ export class CommitMongodb implements ICommitMongodb{
     deleteHypothesisInCommit(idString: string) {
     }
 
-    getHypothesisFromCommit(hypoIdString: string, commitIdString: string) {
+
+    //set commitIdString to current to get the current commit hypotheses
+    async getAllHypothesesInCommit(commitIdString: string) {
+
+        let hypotheses = await database.db(this.databaseName).collection(commitCollectionName).findOne({_id: commitIdString},{projection:{hypotheses: 1, _id: 0}})
+        if(hypotheses)
+        {
+            return hypotheses
+        }
+        return false
+    }
+
+    async getHypothesisFromCommit(hypoIdString: string, commitIdString: string) {
+
     }
 
     postEvidenceToCommit(newEvidence: ArticleSchema | InterviewSchema) {

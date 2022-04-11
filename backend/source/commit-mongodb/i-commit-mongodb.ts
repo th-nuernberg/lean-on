@@ -1,8 +1,16 @@
 import {HypothesisSchema} from "../hypothesis-mongodb/hypothesis-model";
 import {ArticleSchema} from "../evidence-mongodb/article-schema";
 import {InterviewSchema} from "../evidence-mongodb/interview-schema";
-import {CommitSchema} from "./commit-schema";
 import {IIdMongodb} from "../id-mongodb/iid-mongodb";
+
+export interface CommitSchema{
+    _id: string,
+    date: string,
+    title: string,
+    hypotheses: [],
+    evidences: []
+}
+
 
 export interface ICommitMongodb{
 
@@ -14,6 +22,8 @@ export interface ICommitMongodb{
     putCommit(title: string, date: Date)
 
     getCommit(id: string)
+
+    getAllHypothesesInCommit(commitIdString: string)
 
     postHypothesisToCommit(hypothesis: HypothesisSchema, idGetter: IIdMongodb)
 

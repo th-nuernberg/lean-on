@@ -4,7 +4,6 @@ import {IIdMongodb} from "../id-mongodb/iid-mongodb";
 import {ITokenGenerator} from "./token-generator/itoken-generator";
 import {TokenGenerator} from "./token-generator/token-generator";
 import {getAllTeamDatabaseNames} from "../database/getAllUserDatabaseNames";
-import {CommitSchema} from "../commit-mongodb/commit-schema";
 import {ICommitMongodb} from "../commit-mongodb/i-commit-mongodb";
 
 interface teamSchema {
