@@ -12,7 +12,7 @@
                     [colspan]="category.col"
                     [rowspan]="category.row"
     [style.background]="'white'">
-      <app-bmc-category  class="w-100 h-100 d-flex"  [hypotheses]="hypotheses[category.text]" [categoryName]="category.text"></app-bmc-category>
+      <app-bmc-category *ngIf="!isLoading"  class="w-100 h-100 d-flex"  [hypotheses]="hypotheses[category.text]" [categoryName]="category.text"></app-bmc-category>
 
     </mat-grid-tile>
   </mat-grid-list>

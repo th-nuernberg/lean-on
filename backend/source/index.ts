@@ -29,6 +29,7 @@ setTeamAdmin()
 setUpTeamCounter()
 
 
+
 app.post('/team', JwtToken.authenticateTokenAdmin, async (req, res) => {
 
     const routeTeamHandler = new RouteTeamHandler()

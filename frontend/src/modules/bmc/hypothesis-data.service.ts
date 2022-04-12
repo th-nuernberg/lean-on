@@ -31,8 +31,12 @@ export class HypothesesDataService {
 
 
     let hypotheses = await lastValueFrom(request).catch(reason => {
-      console.log({error: true, statuscode: reason["status"], statusText: reason["statusText"]})
-      return false
+      if(reason["status"] !== 200)
+      {
+        console.log({error: true, statuscode: reason["status"], statusText: reason["statusText"]})
+        return false
+      }
+      return true
     })
 
     let sortedHypotheses = this.sortHypothesesIntoCategories(hypotheses)
@@ -58,7 +62,6 @@ export class HypothesesDataService {
 
     for(let hypo of hypotheses["hypotheses"])
     {
-      console.log(hypothesesSplit)
       if(hypo.category)
       {
         hypothesesSplit[hypo.category].push(hypo)

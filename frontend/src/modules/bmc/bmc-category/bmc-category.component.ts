@@ -15,7 +15,6 @@ export class BmcCategoryComponent implements OnInit {
   constructor(public ratingCalculator: HypoRatingCalculatorService) { }
 
   ngOnInit(): void {
-    console.log(this.hypotheses)
   }
 
 }

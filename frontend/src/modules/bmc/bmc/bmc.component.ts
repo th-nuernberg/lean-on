@@ -14,6 +14,7 @@ import {NewHypothesisDialogComponent} from "../new-hypothesis-dialog/new-hypothe
 export class BMCComponent implements OnInit {
 
   hypotheses
+  isLoading : boolean = true
 
   categories = [{text: 'Key Partners', col: '2', row: '2'},
     {text: 'Key Activities', col: '2', row: '1'},
@@ -31,16 +32,21 @@ export class BMCComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.hypotheses = await this.hypothesesDataService.getAllHypothesis()
+    this.isLoading = false
   }
 
 
-  openHypothesisDialog() {
+ openHypothesisDialog() {
     const dialogRef =
       this.dialog.open(NewHypothesisDialogComponent, {
         width: "800px"
       })
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(async (result) => {
+      if(result)
+      {
+        this.hypotheses = await this.hypothesesDataService.getAllHypothesis()
+      }
 
     })
   }
