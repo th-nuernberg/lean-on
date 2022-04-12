@@ -1,14 +1,13 @@
-<div class="card">
-  <div class="card-body m-2">
-    <div class="card-header bg-color-standard text-white row">
-      <div class="p-0">
-        {{rating}}
-      </div> 
-      <div [ngClass]="setHypothesisStatus()">
+<div class="w-75 border-grey d-flex justify-content-center flex-column m-2 box-shadow">
+  <div class="d-flex flex-row justify-content-between border-bottom p-2">
+    <div class="col-1 ">
+      {{rating}}
+    </div>
+    <div class="col-1 circle" [ngClass]="setHypothesisStatus()">
 
-      </div>
     </div>
-    <div class="card-text">{{description}}
-    </div>
+  </div>
+  <div class="break-word p-2">
+    {{description}}
   </div>
 </div>

@@ -3,6 +3,10 @@
   height: auto;
 }
 
+.box-shadow
+{
+  box-shadow: 6px 3px lightgrey;
+}
 
 
 
@@ -14,5 +18,17 @@
   }
 
 }
+
+@media only screen and (max-width: 992px){
+
+  .display-lg
+  {
+    display: none;
+  }
+
+
+}
+
+
 
 

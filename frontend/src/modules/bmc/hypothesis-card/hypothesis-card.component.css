@@ -9,3 +9,25 @@
 .status-rejected{
   background-color: red;
 }
+
+.border-grey{
+  border: 1px grey solid;
+  border-radius: 4px;
+}
+
+.box-shadow
+{
+  box-shadow: 6px 6px lightgrey;
+}
+
+.circle{
+  border-radius: 4px;
+}
+
+.border-bottom{
+  border-bottom: 4px grey solid;
+}
+
+.break-word{
+  word-break: break-word;
+}
